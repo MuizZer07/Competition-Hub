@@ -70,7 +70,13 @@ p{
 	border: 2px solid none;
 	border-radius: 10px;
 	background-color: #e2a2a26b;
-	padding: 5px;
+	padding: 10px;
+}
+#paragraph{
+	border: 2px solid none;
+	border-radius: 10px;
+	background-color: #e2a2a26b;
+	padding: 10px;
 }
 th, td {
     border: 1px solid #f9c8c8;
