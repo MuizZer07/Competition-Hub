@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title> Architecture </title>
+	<title>Architecture</title>
 	<link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
     <link href="assets/css/font-awesome-animation.css" rel="stylesheet" />
@@ -22,19 +22,41 @@
         <div id="sideBar">
         <ul>
           <li><a href="introduction.html">Introduction</a></li>
-          <li><a href="architecture.html">Architecture</a></li>
-          <li><a href="componentDesignSpecification.html">Component Design Specification(s)</a></li>
-          <li><a href="userInterfaceIssues.html">User Interface Issues</a></li>
-          <li><a href="executionArchitecture.html">Execution Architectures</a></li>
+          <li><a href="architecture.html">Architectural Pattern</a></li>
+          <li><a href="componentDesignSpecification.html">Component Design and Interaction</a></li>
+          <li><a href="databasedesign.html">Database Design</a></li>
+          <li><a href="classdesign.html">Class Design</a></li>
+          <li><a href="api.html">API List</a></li>
           <li><a href="designDecisionsAndTradeOffs.html">Design decisions and tradeoffs</a></li>
-          <li><a href="appendices.html">Appendices (if any)</a></li>
         </ul>
        </div>
       </div>
     	<div id="content" class="col-md-8">
-			<h2> 2.0 Architecture </h2>
-			<h3></h3>
-			<p></p>
+		
+    	<h2>2 Architectural Pattern</h2>
+        <h3>2.1 Approach</h3>
+			<div id="paragraph">
+				The system is developed following waterfall model life cycle. The steps are requirement analysis, design, implementation and unit testing, integration and system testing and lastly maintenance. The system will be developed under super vision and rigorous testing to avoid bugs and meet the desired result.
+
+			</div>
+			
+		<h3>2.2 Diagram</h3>
+			
+       
+	   <h4>Design Diagram</h4>
+		   <div id="paragraph">
+			   It has a common database for android app and website that can be accessed through server remotely to search, view and update. 
+		   </div>
+       
+	   <h4>Design Pattern</h4>
+			<div id="paragraph">
+			We are using MVC (MODEL-VIEW-CONTROLLER) design pattern provided by Laravel framework. MVC helps in avoiding mixture of code from different classes designed.
+•	The model component- Handles the data and data flow of the system and performs various operations on data.
+•	The view component- This component is responsible for how the data is represented to the user and how they interact with the data.
+•	The controller component- Manages user interaction and passes these interaction to the view and the model.
+
+There are various ways in which to visualize and interact with system data. Same data can be represented differently based on different scenarios. Also when we will need to change the view of any specific part of the system, changing the view will suffice rather we would have to change the whole thing along with data. This will also make code more manageable as the various components are separated and in the same time inter-connected to ensure the date flow, connectivity between the components and full functionality of the system.
+
 
     	</div>
     </div>
