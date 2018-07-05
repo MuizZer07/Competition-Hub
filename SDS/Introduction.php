@@ -1,5 +1,5 @@
 <?php
-    include 'header.php';
+    include 'assets/inc/header.php';
     ?>
 		
     	<h2>1.0 Introduction</h2>
