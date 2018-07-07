@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title> Design decisions and tradeoffs </title>
+	<link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="assets/css/font-awesome-animation.css" rel="stylesheet" />
+    <link href="assets/css/prettyPhoto.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+	<link href="assets/css/fontawesome-all.css" rel="stylesheet" />
+</head>
+
+<body>
+
+	<div id="headerBar">
+		<h1><i id="logo" class="fas fa-trophy"></i> CompetitionHub </h1>
+	</div>
+   <div class="container-fluid">
+      <div class="col-md-4">
+        <div id="sideBar">
+        <ul>
+		  <li><a href="introduction.html">Introduction</a></li>
+          <li><a href="architecture.html">Architecture</a></li>
+          <li><a href="componentDesignSpecification.html">Component Design Specification(s)</a></li>
+          <li><a href="userInterfaceIssues.html">User Interface Issues</a></li>
+          <li><a href="executionArchitecture.html">Execution Architectures</a></li>
+          <li><a href="designDecisionsAndTradeOffs.html">Design decisions and tradeoffs</a></li>
+          <li><a href="appendices.html">Appendices (if any)</a></li>
+        </ul>
+       </div>
+      </div>
+    	<div id="content" class="col-md-8">
+		
+    		<h2> 4.0 Design decisions and tradeoffs </h2>
+			<h3>4.1 Approach</h3>
+			<p> We will use MySQL as our database software. It will contain tables to narrate different 
+			categories of data and will also recite connections and dependencies between each table.</p>
+				
+			<h3>4.2 Design </h3>
+			<div id="diagram">
+				<img src="assets/img/ERdiagram.png" width="820" height="750" alt="ER Diagram" >
+				<h3 style="background-color: #e2a2a26b;">Figure 4.2.1: E-R Diagram</h3>
+			</div>
+			<h3>4.3 Details of each table</h3>
+			
+			<div id="paragraph"> 
+				<b> Table name: User </b>
+				<br>Attributes:
+				
+				<ul>
+					<li> id - int</li>
+					<li> username - string </li>
+					<li> email - string </li>
+					<li> preferences - string </li>
+				</ul>
+			</div>
+			<br>
+			<div id="paragraph"> 
+				<b> Table name: Organizer </b>
+				<br>Attributes:
+			
+				<ul>
+					<li> user_id - int (Forign Key - User Table)</li>
+					<li> competition_id - int (Forign Key - Competition Table) </li>
+				</ul>
+			</div>
+			<br>	
+			
+			<div id="paragraph"> 
+				<b> Table name: Competition </b>
+				<br>Attributes:
+				
+				<ul>
+					<li> id - int </li>
+					<li> name - string </li>
+					<li> deadline - datetime </li>
+					<li> venue - string </li>
+					<li> description - string </li>
+				</ul>
+			</div>
+			<br>
+
+			<div id="paragraph">			
+				<b> Table name: Query </b>
+				<br>Attributes:
+				
+				<ul>
+					<li> id - int </li>
+					<li> compettion_id - int (Forign Key -  Competition Table)</li>
+					<li> user_id - int (Forign Key - User Table)</li>
+					<li> details - string </li>
+					<li> response - string </li>
+				</ul>
+			</div>
+			<br>
+			<div id="paragraph">			
+				<b> Table name: Updates </b>
+				<br>Attributes:
+				
+				<ul>
+					<li> post-id - int </li>
+					<li> compettion_id - int (Forign Key -  Competition Table)</li>
+					<li> post-details - string </li>
+				</ul>
+			</div>
+			<br>
+			<div id="paragraph">			
+				<b> Table name: Particited competitions </b>
+				<br>Attributes:
+				
+				<ul>
+					<li> user_id - int (Forign Key - User Table)</li>
+					<li> post-id - int (Forign Key -  Updates Table) </li>
+					<li> compettion_id - int (Forign Key -  Competition Table)</li>
+					<li> isCompleted - boolean </li>
+				</ul>
+			</div>
+			<br>
+			<div id="paragraph">			
+				<b> Table name: Catagories </b>
+				<br>Attributes:
+				
+				<ul>
+					<li> id - int </li>
+					<li> name - string </li>
+				</ul>
+			</div>
+    	</div>
+    </div>
+
+</body>
+</html> 
