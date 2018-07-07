@@ -13,6 +13,12 @@
 	text-align: center;	
 	color: #f9c8c8;
 }
+#headerBar a{
+	 text-decoration:none; 
+	 color: #f9c8c8;
+	 visited: #f9c8c8;
+	 hover: #f9c8c8;
+}
 
 #logo{
 	border: 2px solid #f9c8c8;
