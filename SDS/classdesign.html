@@ -43,15 +43,17 @@
 			</div>
        
 	   <h3> 4.3 Details of each class </h3>
-		   <h2>User:</h2> <p>it contains all types of users. Such as: Participants and organizers. The attributes of this class is: Id; name; current institution.</p>
+		   <h4>User:</h4> <p>it will contain all types of users. Such as: Participants and organizers. The attributes of this class is: Id; name; competitionId(foreign key); organizerTeamId(foreign key); current institution.</p>
 
-<h2>Organizer Team: </h2> <p> this class is made up by one or multiple users. Any user can create a organizer team, add members. The attributes of this class is: Id; userId(foreign key); OrganizerName. </p>
+<h4>Organizer Team: </h4> <p> this class is made up by one or multiple users. Any user can create a organizer team, add members. The attributes of this class is: Id; userId(foreign key); competitionId(foreign key); OrganizerName. </p>
 
-<h2> Competition:</h2> <p> Organizer team creates the competition and Participants can participate in the competition. There will also be a forum and discussion panel in every competition. The attributes of this class is: Id; userId(foreign key); name; venue; date; deadline.</p>
-<h2> Query:</h2> <p> Every competition have a forum. Where any one can ask about any query. And admin will answer to it. The attributes of this class is: Id; competitionId(foreign key).</p>
+<h4> Competition:</h4> <p> Organizer team creates the competition and Participants can participate in the competition. There will also be a forum and discussion panel in every competition. The attributes of this class is: Id; userId(foreign key); organizerTeamId(foreign key); name; venue; date; deadline.</p>
 
-<h2>Update:</h2> <p> Every competition will have a discussion page. Where the admin will post any update related with the Competition. Anyone will be able to comment on it. And admin will answer to it. The attributes of this class is: Id; competitionId(foreign key).</p>
-<h2> Category: </h2> <p> It is an abstract class. Every competition must belong to any category. The attributes of this class is: Id; competitionId(foreign key).</p>
+<h4> Query:</h4> <p> Every competition have a forum. Where any one can ask anything about the competition. And admin/any other user will answer to it. The attributes of this class is: Id; competitionId(foreign key); userId(foreign key); organizerTeamId(foreign key); comments.</p>
+
+<h4>Update:</h4> <p> Every competition will have a discussion page. Where the admin will post any update related with the Competition. Anyone will be able to comment on it. And admin will answer to it. The attributes of this class is: Id; competitionId(foreign key); userId(foreign key); organizerTeamId(foreign key); updateText; comments.</p>
+
+<h4> Category: </h4> <p> It is an abstract class. Every competition must belong to any category. The attributes of this class is: Id; categoryName.</p>
 
 
     	</div>
