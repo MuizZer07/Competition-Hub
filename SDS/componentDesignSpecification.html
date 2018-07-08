@@ -15,7 +15,7 @@
 <body>
 
 	<div id="headerBar">
-		<h1><i id="logo" class="fas fa-trophy"></i> CompetitionHub </h1>
+		<h1><a href="SDS_Launching_page.html"><i id="logo" class="fas fa-trophy"></i> CompetitionHub </a></h1>
 	</div>
    <div class="container-fluid">
       <div class="col-md-4">
@@ -30,46 +30,76 @@
         </ul>
        </div>
       </div>
-    	<div id="content" class="col-md-8">
-		
-    		<h2> 3.0  Component Design Specification(s)</h2>
-			<p>
-    This content provides a basic overview of the design procedures of a few key components of the software. The tables will exhibit more details on key components:
-        <li>Database: We will use MySQL in our database system. It will contain tables to describe diverse classes of information and will likewise discuss connections and dependencies between each table.</li>
+		<div id="content" class="col-md-8">
+			
+				<h2> 3.0  Component Design Specification(s)</h2>
+				<div id="paragraph">
+				This content provides a basic overview of the design procedures of a few key components 
+				of the software. The tables will exhibit more details on key components:<br>
+				<br>
+				<ul>
+					<li> Database: We will use MySQL in our database system. It will contain tables to
+					describe diverse classes of information and will likewise discuss connections and 
+					dependencies between each table. </li><br>
 
-        <li>Server Software: Our server software will directly manipulate the contents of the database, based on commands from the Server Procedure Proxy.</li>
-        
-        <li>The User Software will live on a workstation and will be likewise accessible on android form. Its motivation is to display information to the user as asked for, and give an interface with the goal that the user can access without much of a stretch refresh venture data. It will deal with compromise consequently when conceivable, and generally enable the client to pick which variant of a thing to keep.</li>
-        <li>Android User: The Android will allow the user to view basic information and make simple changes to data regarding that particular user.
-        </li>
-   
-      </p>
-      <h2> 3.1  Component Interaction</h2>
-      <p>
-      <li>The “CompetitionHub” design has been divided into three major sub-system; server application, user applications and database system. The server application is then separated into five major subsections; the server component, server communication, server GUI (Graphical User Interface), all information in database and shows in table with graphical interface. The user application separated into two subsections: the client component and the client communication.</li>
-      <br>
-      <br>
+					<li> Server Software: Our server software will directly manipulate the contents of 
+					the database, based on commands from the Server Procedure Proxy. </li><br>
+					
+					<li> The User Software will live on a workstation and will be likewise accessible 
+					on android form. Its motivation is to display information to the user as asked for, 
+					and give an interface with the goal that the user can access without much of a stretch
+					refresh venture data. It will deal with compromise consequently when conceivable, and
+					generally enable the client to pick which variant of a thing to keep. </li> <br>
+					
+					<li> Android User: The Android will allow the user to view basic information and make
+					simple changes to data regarding that particular user.
+					</li>
+				</ul>
+			  </div>
+		  <h2> 3.1  Component Interaction</h2>
+		  <div id="paragraph">
+			  <li>The “CompetitionHub” design has been divided into three major sub-system; server application, 
+			  user applications and database system. The server application is then separated into five major 
+			  subsections; the server component, server communication, server GUI (Graphical User Interface), 
+			  all information in database and shows in table with graphical interface. The user application 
+			  separated into two subsections: the client component and the client communication.</li>
+			  <br>
+			  <br>
 
 
-      <li>The server application’s major design considerations include easy database store, easy database update and delete option, multiple user support, and a minimal set of administrative features. The server application has been designed to be as flexible as possible. Given the project’s constraints of human resources, software resources, and time, the server is not completely “data independent”. Portions of the server application are specific to this automated accommodation. This portion are discussed in the server application detailed design strategies.</li>
-      <br>
-      <br>
+			  <li>The server application’s major design considerations include easy database store, easy database
+			  update and delete option, multiple user support, and a minimal set of administrative features. The
+			  server application has been designed to be as flexible as possible. Given the project’s constraints
+			  of human resources, software resources, and time, the server is not completely “data independent”. 
+			  Portions of the server application are specific to this automated accommodation. This portion are 
+			  discussed in the server application detailed design strategies.</li>
+			  <br>
+			  <br>
 
 
-      <li>The client application is designed to support the following major feature: simple search of competitions, easy to understand dialogs, and support of an internet transport (hosting and server) for any kind of competition related information retrieval.</li>
-      <br>
-      <br>
+			  <li>The client application is designed to support the following major feature: simple search of 
+			  competitions, easy to understand dialogs, and support of an internet transport (hosting and server)
+			  for any kind of competition related information retrieval.</li>
+			  <br>
+			  <br>
 
 
-      <li>Unlike the server application, the user application has been designed completely data independent but with very strong user information privacy. No portion of the user application is implementation independent with their information and reviews, comments, event information, picture and other related things. This provides flexibility for other potential uses for the user application.</li>
-      <br>
-      <br>
+			  <li>Unlike the server application, the user application has been designed completely data
+			  independent but with very strong user information privacy. No portion of the user application is 
+			  implementation independent with their information and reviews, comments, event information, picture 
+			  and other related things. This provides flexibility for other potential uses for the user 
+			  application.</li>
+			  <br>
+			  <br>
 
 
-      <li>Given the system’s requirement that the user application must be supported on a web platform, the design uses several web specific technologies like Laravel, html5, css3, bootstrap, PHP. And specially also build for android users “android application”. This technology was chosen because they required the least amount of research and learning time, both of which we are limited in. </li>
+			  <li>Given the system’s requirement that the user application must be supported on a web platform, 
+			  the design uses several web specific technologies like Laravel, html5, css3, bootstrap, PHP. And 
+			  specially also build for android users “android application”. This technology was chosen because
+			  they required the least amount of research and learning time, both of which we are limited in. </li>
 
-      </p>
-    	</div>
+		  </div>
+		</div>
     </div>
 
 </body>
