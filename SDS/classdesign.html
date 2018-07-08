@@ -34,6 +34,24 @@
 		
     	<h2> 4.0 Class Design </h2>
         <h3> 4.1 Class Description </h3>
+		<div id="paragraph">
+			
+			1.User: We are using user class to store all the data about a user. Everytime a user registers to our system a new row of data will be stored and also for sign in we will match data from this class.
+			<br><br>
+			2.Organizer Team: Users create a organizer team to organize a competition. It may contain one or more user. The organizer team will create competition and will give update about the competition.
+			<br><br>
+			3.Competition: Organizer team creates the competition and any user will be able to participate in the competition. It will store the data about the users who are going to participate and also about the organizer who are organizing this.
+			<br><br>
+			4.Query: Many participants may have different set of queries related with the competition. So, we are creating a forum where any one will be able to ask anything. Queries will be stored against the userId.
+			<br><br>
+			5.Update: The competitions may have many updates which the participants must know. So, the organizer team will be able to give any update post. 
+			<br><br>
+			6.Category: Every competition must belong to a competition. The competition class will store the categoryId from which the competition belongs to. 
+
+			
+			
+			</div>
+
 			
 			
 		<h3> 4.2 Class Diagram </h3>
