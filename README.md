@@ -1,45 +1,37 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+::: Database Design :::
+(Everyone read this before implementing the project) 
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+Shorthands: pk = primary key, U= unique, AI = auto increment, FK = foreign key
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+Tables:
 
----
+User => id (pk, AI), username (U), password, email (U), full_name
+[[[[ Username and email must be unique, because we want to send request to particular user and many more functionalities, id is auto incremented, you don't need to worry about that when you are performing any types of query (insert, delete) ]]]]
 
-## Edit a file
+Organization => id (pk, AI), name (U)
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+Organizer => organizer_id (pk, FK), user_id (pk, FK)
+[[[[ Both are primary keys because we want to add multiple users to multiple organizations and vice verse. It is a convenient way to implement many to many relationship ]]]]
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text:
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+{{ Organizations can have multiple users, Users can be part of multiple organizations, two tables needed }}
 
----
+Competition => id (pk, AI), name, venue, date, registration_deadline, description, catagory_id (FK), organization_id (FK), latest_updates_id (FK)
+[[[[ competition has organization_id to identify why organization organizes the competition, by which we can also find out who are the organizers (join organizer table), this table will also contain the latest post from the updates table. every time there is a new post, competition table updates the latest_post_id ]]]]
 
-## Create a file
+Catagory => id (pk, AI), name, description
 
-Next, you’ll add a new file to this repository.
+participated_competition => id (pk, AI), user_id (FK), competition_id (FK), isCompleted
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
+Query => id (pk, AI), competition_id (FK), user_id (FK), details, response
+[[[[ any user can ask for a query. competition_id has a corresponding organization_id which also has organizers who only can response to the query. So there will be a complex query. (join query, competition, organization, organizer) ]]]]
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+Updates => id (pk, AI), competition_id (FK), post_details (FK), post_date
+[[[[ Every time a new update is given by an organizer, competition_id checks whether the organizer is in the organization or not, also updates the competition's latest_update_id with the update_id ]]]]
 
----
+# Database is given here. Please check all the specifications above, and recheck the database implementation in the SQL file.
 
-## Clone a repository
-
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
-
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
-
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+... If needed::
+- run mysql and apache server
+- go to http://localhost/phpmyadmin/
+- create a new database "competitionhub_db
+- Import the sql file
