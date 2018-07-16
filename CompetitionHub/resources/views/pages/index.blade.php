@@ -5,6 +5,7 @@
 <div class="content">
     <div class="card">
         <div class="card-body" style="text-align: center">
+            <img src="{{ asset('img/logo2.jpg')}}" alt="Logo" width="50%" height="50%">
             <h1 class="card-title">Welcome to CompetitionHub!</h1>
             <p class="card-text">This is the greatest competition hosting platform. Host your competitions and also participate in 
                 other competitions around the world. </p>
@@ -12,7 +13,7 @@
                 <a href="/competitions" class="btn btn-default">Explore Competitions</a>
             </div>
     </div>
-    <br><br><br><br><br><br><br><br>
+    <br><br><br><br>
     
 </div>
 
