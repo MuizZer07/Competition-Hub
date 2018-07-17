@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Competition;
+use App\ParticipationHistory;
 
 class CompetitionController extends Controller
 {
@@ -75,7 +76,15 @@ class CompetitionController extends Controller
     public function show($id)
     {
       $competition = Competition::find($id);
-      return view('pages.competition.show')->with('competition', $competition);
+      $history = ParticipationHistory::where([
+          'participant_id' => auth()->user()->id,
+          'competition_id' => $id
+      ])->get();
+
+      return view('pages.competition.show')->with([
+          'competition'=> $competition,
+          'history'=> $history
+      ]);
     }
 
     /**
