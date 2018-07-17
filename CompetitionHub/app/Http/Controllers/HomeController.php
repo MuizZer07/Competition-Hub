@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use App\Organizer;
+use App\OrganizerTeam;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $ID = auth()->user()->id;
+        $teams = DB::select('Select name from organizer_teams join organizers where user_id = '.$ID);
+        return view('home')->with('teams',$teams);
     }
 }

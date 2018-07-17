@@ -18,4 +18,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/competitions', 'CompetitionController');
 Route::resource('/history', 'ParticipationHistoryController');
+Route::resource('/organizerteam', 'OrganizerTeamController');
+Route::resource('/organizers', 'OrganizersController');
+Route::get('/history/all_participants/{competition_id}', 'ParticipationHistoryController@showallparticipants');
 Route::get('/history/all_participants/{competition_id}', 'ParticipationHistoryController@showallparticipants');
