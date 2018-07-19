@@ -20,5 +20,7 @@ Route::resource('/competitions', 'CompetitionController');
 Route::resource('/history', 'ParticipationHistoryController');
 Route::resource('/organizerteam', 'OrganizerTeamController');
 Route::resource('/organizers', 'OrganizersController');
+Route::get('/organizers/create/{organizerteam_id}', 'OrganizersController@create'); 
+Route::get('/organizers/save/{organizerteam_id}', 'OrganizersController@store'); 
 Route::get('/history/all_participants/{competition_id}', 'ParticipationHistoryController@showallparticipants');
 Route::get('/history/all_participants/{competition_id}', 'ParticipationHistoryController@showallparticipants');

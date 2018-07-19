@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use DB;
 use App\Organizer;
 use App\OrganizerTeam;
+use App\Competition;
+use App\ParticipationHistory;
 
 class HomeController extends Controller
 {
@@ -27,7 +29,10 @@ class HomeController extends Controller
     public function index()
     {
         $ID = auth()->user()->id;
-        $teams = DB::select('Select name from organizer_teams join organizers where user_id = '.$ID);
-        return view('home')->with('teams',$teams);
+        $teams = DB::select('Select * from organizer_teams join organizers where id = organizer_team_id and user_id = '.$ID);
+        $competitions_id = ParticipationHistory::pluck('competition_id')->where('participant_id', $ID);
+
+        $competitions = DB::select('select * from competitions c join (select p.competition_id from participation_histories p where p.participant_id = '.$ID.') p on c.id = p.competition_id');
+        return view('home')->with(['teams' => $teams, 'competitions' => $competitions]);
     }
 }

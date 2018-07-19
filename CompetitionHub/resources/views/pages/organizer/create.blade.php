@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="/competitions" class="btn btn-default"> Go Back </a>
+    <a href="/home" class="btn btn-default"> Go Back </a>
     <h1>Add Team Members</h1>
-    {!! Form::open(['action'=> 'OrganizersController@store', 'method'=>'POST']) !!}
+    {!! Form::open(['action'=> ['OrganizersController@store', $id], 'method'=>'GET']) !!}
         <div class="form-group">
             {{ Form::label('name','Add')}}
-            {!! Form::select('users', $users, ['class' => 'form-control'],[
-                'multiple' => true, 'id'=>'rolesLista'
+            {!! Form::select('users[]', $users->pluck('name')->all(), ['class' => 'form-control'],[
+                'multiple' => 'multiple', 'id'=>'users'
             ]) !!}
         </div>
         

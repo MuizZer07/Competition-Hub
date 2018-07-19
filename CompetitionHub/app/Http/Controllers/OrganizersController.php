@@ -4,9 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Organizer;
+use App\OrganizerTeam;
+use DB;
 
 class OrganizersController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,10 +34,15 @@ class OrganizersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        $users = User::pluck('name')->all();
-        return view('pages.organizer.create')->with('users', $users);
+        // $users = DB::select("select u.name from users u join organizers o
+        //                     on u.id != o.user_id
+        //                     and o.organizer_team_id = ".$id);
+        
+        
+        $users = User::all();
+        return view('pages.organizer.create')->with(['users' => $users, 'id'=> $id]);
     }
 
     /**
@@ -34,9 +51,23 @@ class OrganizersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'users' => 'required'
+        ]);
+
+        $users = $request->input('users');
+        
+
+        foreach($users as $user){
+            $organizer = new Organizer;
+            $organizer->user_id = $user;
+            $organizer->organizer_team_id =  $id;
+            $organizer->save();
+        }
+
+        return redirect('/home')->with('success', 'Organizer(s) Added!');
     }
 
     /**
@@ -58,7 +89,7 @@ class OrganizersController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**

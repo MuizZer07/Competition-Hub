@@ -76,15 +76,21 @@ class CompetitionController extends Controller
     public function show($id)
     {
       $competition = Competition::find($id);
-      $history = ParticipationHistory::where([
-          'participant_id' => auth()->user()->id,
-          'competition_id' => $id
-      ])->get();
-
+      try{
+        $history = ParticipationHistory::where([
+            'participant_id' => auth()->user()->id,
+            'competition_id' => $id
+        ])->get();
+  
+        
+      }catch(\Exception $e){
+        $history = null;
+      }
       return view('pages.competition.show')->with([
-          'competition'=> $competition,
-          'history'=> $history
-      ]);
+        'competition'=> $competition,
+        'history'=> $history
+    ]);
+      
     }
 
     /**

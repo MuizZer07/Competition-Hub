@@ -4,9 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\OrganizerTeam;
+use App\Organizer;
+use App\User;
+use DB;
 
 class OrganizerTeamController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,6 +52,12 @@ class OrganizerTeamController extends Controller
         $team->description = $request->input('description');
         $team->creator_id = auth()->user()->id;
         $team->save();
+        $team_id = $team->id;
+
+        $organizer = new Organizer;
+        $organizer->user_id = auth()->user()->id;
+        $organizer->organizer_team_id =  $team_id;
+        $organizer->save();
 
         return redirect('/competitions')->with('success', 'Organizer Team Created!');
     }
@@ -52,7 +70,12 @@ class OrganizerTeamController extends Controller
      */
     public function show($id)
     {
-        //
+        $team = OrganizerTeam::find($id);
+        $members = DB::select("select * from users u join organizers o
+                        where u.id = o.user_id
+                        and o.organizer_team_id = ".$id);
+
+        return view('pages.organizerteam.show')->with(['team'=> $team, 'members'=> $members]);
     }
 
     /**
@@ -63,7 +86,8 @@ class OrganizerTeamController extends Controller
      */
     public function edit($id)
     {
-        //
+        $team = OrganizerTeam::find($id);
+        return view('pages.organizerteam.edit')->with('team', $team);
     }
 
     /**
@@ -75,7 +99,12 @@ class OrganizerTeamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $team = OrganizerTeam::find($id);
+        $team->name = $request->input('name');
+        $team->description = $request->input('description');
+        $team->save();
+
+        return redirect('/home')->with('success', 'Organizer Team Updated!');
     }
 
     /**
