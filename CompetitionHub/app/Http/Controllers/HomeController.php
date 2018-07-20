@@ -33,6 +33,10 @@ class HomeController extends Controller
         $competitions_id = ParticipationHistory::pluck('competition_id')->where('participant_id', $ID);
 
         $competitions = DB::select('select * from competitions c join (select p.competition_id from participation_histories p where p.participant_id = '.$ID.') p on c.id = p.competition_id');
-        return view('home')->with(['teams' => $teams, 'competitions' => $competitions]);
+        $comp = DB::table('organizers')
+                        ->join('competitions', 'organizers.organizer_team_id', 'competitions.organizer_teams_id')
+                        ->where('user_id', $ID)
+                        ->pluck('competitions.name')->all();
+        return view('home')->with(['teams' => $teams, 'competitions' => $competitions, 'comp'=> $comp]);
     }
 }

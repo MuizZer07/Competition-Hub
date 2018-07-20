@@ -40,8 +40,11 @@ class OrganizersController extends Controller
         //                     on u.id != o.user_id
         //                     and o.organizer_team_id = ".$id);
         
-        
-        $users = User::all();
+        $user = DB::table('users')->join('organizers', 'id', 'organizers.user_id')
+                                   ->where('organizer_team_id', $id)->pluck('name')
+                                   ->all(); 
+        $users = DB::table('users')->whereNotIn('name', $user)->get();
+        // $users = User::all();
         return view('pages.organizer.create')->with(['users' => $users, 'id'=> $id]);
     }
 
@@ -57,10 +60,9 @@ class OrganizersController extends Controller
             'users' => 'required'
         ]);
 
-        $users = $request->input('users');
-        
-
-        foreach($users as $user){
+        $users_id = $request->input('users');
+        // throw new \Exception($request->get('usersss'));
+        foreach($users_id as $user){
             $organizer = new Organizer;
             $organizer->user_id = $user;
             $organizer->organizer_team_id =  $id;

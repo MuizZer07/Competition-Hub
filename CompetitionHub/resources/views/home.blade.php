@@ -87,17 +87,17 @@
                             Your organizing Events <br>
                             <a href="/competitions/create" class="btn btn-info pull-right">Host New Competition</a><br><br>
         
-                            @if(count($competitions)>0)
+                            @if(count($comp)>0)
                             <table class="table table-striped">
                                 <tr>
                                     <th>Competition Name</th>
-                                    <th>Date</th>
                                     <th></th>
                                 </tr>
-                           
+                               @foreach($comp as $c)    
                                 <tr>
-                                    <td> Yet to be fetched</td>
+                                    <td> {{ $c }}</td>
                                 </tr>
+                                @endforeach
                             </table>
                             @else
         

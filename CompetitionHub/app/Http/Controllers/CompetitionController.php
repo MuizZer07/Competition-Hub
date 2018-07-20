@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Competition;
 use App\ParticipationHistory;
+use App\Organizers;
+use App\OrganizerTeam;
+use DB;
 
 class CompetitionController extends Controller
 {
@@ -37,7 +40,9 @@ class CompetitionController extends Controller
      */
     public function create()
     {
-    return view('pages.competition.create');
+        $user = auth()->user()->id;
+        $teams = DB::Table('organizer_teams')->join('organizers', 'id', 'organizers.organizer_team_id')->where('user_id', $user)->get();
+        return view('pages.competition.create')->with('teams', $teams);
     }
 
     /**
