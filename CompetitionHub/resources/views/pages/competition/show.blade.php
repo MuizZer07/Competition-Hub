@@ -6,6 +6,7 @@
         <h1 class="card-title">
             {{ $competition->name }}</h1>
             <p class="card-text">
+                    Catagory: {{ $catagory->name }} <br>
                     Venue: {{ $competition->venue }} <br>
                     Event Date: {{ $competition->event_date }} <br>
                 <b> Registration Deadline: {{ $competition->reg_deadline}} </b><br><br>

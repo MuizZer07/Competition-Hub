@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateCompetitionTable extends Migration
+class CreateUpdatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class UpdateCompetitionTable extends Migration
      */
     public function up()
     {
-        Schema::table('competitions', function($table){            
-            $table->integer('organizer_teams_id')->unsigned();
-            $table->foreign('organizer_teams_id')
-                ->references('id')
-                ->on('organizer_teams')
-                ->onDelete('cascade');
-});
-
+        Schema::create('updates', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('post');
+            $table->integer('competition_id');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -30,6 +28,6 @@ class UpdateCompetitionTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('updates');
     }
 }

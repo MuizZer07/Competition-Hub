@@ -7,6 +7,7 @@ use App\Competition;
 use App\ParticipationHistory;
 use App\Organizers;
 use App\OrganizerTeam;
+use App\Catagory;
 use DB;
 
 class CompetitionController extends Controller
@@ -30,7 +31,8 @@ class CompetitionController extends Controller
     public function index()
     {
         $competitions = Competition::all();
-        return view('pages.competition.index')->with('competitions', $competitions);
+        $catagories = Catagory::all();
+        return view('pages.competition.index')->with(['competitions'=> $competitions, 'catagories'=> $catagories]);
     }
 
     /**
@@ -40,9 +42,10 @@ class CompetitionController extends Controller
      */
     public function create()
     {
+        $catagories = Catagory::all();
         $user = auth()->user()->id;
         $teams = DB::Table('organizer_teams')->join('organizers', 'id', 'organizers.organizer_team_id')->where('user_id', $user)->get();
-        return view('pages.competition.create')->with('teams', $teams);
+        return view('pages.competition.create')->with(['teams'=> $teams, 'catagories' => $catagories]);
     }
 
     /**
@@ -58,7 +61,9 @@ class CompetitionController extends Controller
             'venue' => 'required',
             'event_date' => 'required',
             'reg_deadline' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'organizer_team' => 'required',
+            'catagory' => 'required'
         ]);
 
         $competition = new Competition;
@@ -67,6 +72,8 @@ class CompetitionController extends Controller
         $competition->description = $request->input('description');
         $competition->event_date = $request->input('event_date');
         $competition->reg_deadline = $request->input('reg_deadline');
+        $competition->organizer_teams_id = $request->input('organizer_team'); // haven't fixed yet
+        $competition->catagory_id = $request->input('catagory')+1;
         $competition->save();
 
         return redirect('/competitions')->with('success', 'competition Created!');
@@ -81,6 +88,8 @@ class CompetitionController extends Controller
     public function show($id)
     {
       $competition = Competition::find($id);
+      $catagory_id = $competition->catagory_id;
+      $catagory = Catagory::find($catagory_id);
       try{
         $history = ParticipationHistory::where([
             'participant_id' => auth()->user()->id,
@@ -93,7 +102,8 @@ class CompetitionController extends Controller
       }
       return view('pages.competition.show')->with([
         'competition'=> $competition,
-        'history'=> $history
+        'history'=> $history,
+        'catagory'=> $catagory
     ]);
       
     }

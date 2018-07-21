@@ -31,9 +31,14 @@
         </div>
         <div class="form-group">
                 {{ Form::label('organizer_team','Orgnizer Team')}}
-                {!! Form::select('Select Your team:',  $teams->pluck('name')->all(), ['class' => 'form-control'],
+                {!! Form::select('organizer_team',  $teams->pluck('name')->all(), ['class' => 'form-control'],
                 ['id'=>'users' ]) !!}
             </div>
+        <div class="form-group">
+                {{ Form::label('catagory','Select Catagory')}}
+                {!! Form::select('catagory',  $catagories->pluck('name')->all(), ['class' => 'form-control'],
+                ['id'=>'catagories' ]) !!}
+        </div>
         {{ Form::submit('Submit', ['class'=>'btn btn-primary']) }}
     {!! Form::close() !!}
  </div>
