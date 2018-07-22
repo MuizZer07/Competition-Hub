@@ -1,18 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.rashique.competitionhub.MainActivity">
+    tools:context="com.example.rashique.competitionhub.MainActivity"
+    android:orientation="vertical">
 
-    <TextView
+    <ru.dimorinny.floatingtextbutton.FloatingTextButton
+    android:id="@+id/explore_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    app:floating_background_color="@color/colorPrimary"
+    app:floating_left_icon="@drawable/ic_person_black_24dp"
+    app:floating_title="@string/app_name"
+    app:floating_title_color="@android:color/white"
+
+    />
+
+    <ru.dimorinny.floatingtextbutton.FloatingTextButton
+        android:id="@+id/createCompetition_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="center"
+        app:floating_background_color="@color/colorPrimary"
+        app:floating_left_icon="@drawable/ic_create_black_24dp"
+        app:floating_title="@string/app_name"
+        app:floating_title_color="@android:color/white"
 
-</android.support.constraint.ConstraintLayout>
+        />
+    <ru.dimorinny.floatingtextbutton.FloatingTextButton
+        android:id="@+id/yourTeam_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:floating_background_color="@color/colorPrimary"
+        app:floating_left_icon="@drawable/ic_person_black_24dp"
+        app:floating_title="@string/app_name"
+        app:floating_title_color="@android:color/white"
+
+        />
+
+</LinearLayout>
