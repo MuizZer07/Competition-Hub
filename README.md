@@ -5,6 +5,7 @@
 - Basic Front End
 - User Authentications
 - Admin authentications
+- Confirmation mail
 
 ::::: Need Fixes
 - dropdown select return index (competition_create, organizers_add)
@@ -15,11 +16,10 @@
 - Minor changes in Database
 - Add more Users Table attribute 
 - User Profile creation
-- Confirmation mail
 - Notifications
 - Server hosting
 - Unit testing
-- Database populate
+- populating Database
 
 ::::: Front End Specs
 - recommendations

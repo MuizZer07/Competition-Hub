@@ -29,7 +29,7 @@ class CompetitionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
         $competitions = Competition::all();
         $catagories = Catagory::all();
         return view('pages.competition.index')->with(['competitions'=> $competitions, 'catagories'=> $catagories]);
@@ -90,6 +90,7 @@ class CompetitionController extends Controller
       $competition = Competition::find($id);
       $catagory_id = $competition->catagory_id;
       $catagory = Catagory::find($catagory_id);
+
       try{
         $history = ParticipationHistory::where([
             'participant_id' => auth()->user()->id,

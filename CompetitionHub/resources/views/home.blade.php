@@ -2,6 +2,13 @@
 
 @section('content')
 <div class="container">
+        
+            @if(auth()->user()->token != null)
+            <div class="alert alert-danger" role="alert">
+                Please Verify your Email Account. 
+            </div>
+            @endif
+        
     <div class="row justify-content">
         <div class="col-md-7">
             <div class="card">
