@@ -4,6 +4,7 @@
 - Basic Database (All tables)
 - Basic Front End
 - User Authentications
+- Admin authentications
 
 ::::: Need Fixes
 - dropdown select return index (competition_create, organizers_add)
@@ -14,7 +15,6 @@
 - Minor changes in Database
 - Add more Users Table attribute 
 - User Profile creation
-- Admin authentications
 - Confirmation mail
 - Notifications
 - Server hosting
