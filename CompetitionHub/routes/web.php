@@ -51,3 +51,8 @@ Route::get('/organizers/save/{organizerteam_id}', 'OrganizersController@store');
 
 # Email Verification
  Route::get('/verify/{token}', 'VerifyController@verify')->name('verify');
+
+ #Facebook
+
+ Route::get('login/google', 'Auth\LoginController@redirectToProvider')->name('google.login');
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
