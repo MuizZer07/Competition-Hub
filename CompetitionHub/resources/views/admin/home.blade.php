@@ -1,11 +1,29 @@
-@extends('layouts.app')
+
+@extends('layouts.admins')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content center">
-        <div class="col-md-8">
-                    Admin Dashboard
-            </div>
+
+    
+    <h1>Admin Dashboard</h1>
+
+    <section class="row text-center">
+        <div class="col-6 col-sm-3  card" style="border-radius: 25%;">
+            <h1>20</h1>
+            Total Users
         </div>
-</div>
+        <div class="col-6 col-sm-3  card" style="border-radius: 25%">
+            <h1>10</h1>
+            New Competitions
+        </div>
+        <div class="col-6 col-sm-3  card" style="border-radius: 25%">
+            <h1>1000+</h1>
+            Total Participants
+        </div>
+        <div class="col-6 col-sm-3  card" style="border-radius: 25%">
+            <h1>100+</h1>
+            Total Organizers
+        </div>
+    </section>
+
+        
 @endsection
