@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ParticipationHistory;
 use App\Competition;
+use DB;
 
 class ParticipationHistoryController extends Controller
 {
@@ -73,8 +74,11 @@ class ParticipationHistoryController extends Controller
 
     public function showallparticipants($competition_id)
     {
-        $history = ParticipationHistory::where('competition_id', $competition_id)->get();
-        return view('pages.competition.allparticipants')->with('history', $history);
+        // $history = ParticipationHistory::where('competition_id', $competition_id)->get();
+        $users = DB::Table('users')
+                    ->join('participation_histories', 'id', 'participant_id')
+                    ->where('competition_id', $competition_id)->get();
+        return view('pages.competition.allparticipants')->with('users', $users);
     }
 
 

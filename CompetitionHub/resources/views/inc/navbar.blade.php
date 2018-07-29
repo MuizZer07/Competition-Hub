@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel mainnavbar">
    
-      <img src="{{ asset('img/logo.png')}}" alt="Logo" width="10%" height="10%">
+      <img src="{{ asset('img/logo.png')}}" alt="Logo" width="5%" height="5%">
       <h3 style="color: white"> {{ config('app.name', 'CompetitionHub')}} </h3>
   
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
