@@ -72,6 +72,7 @@
                             <tr>
                                 <td> {{ $competition->name }}</td>
                                 <td> {{ $competition->event_date }}</td>
+                            <td> <a href="/update/{{ $competition->id }}/show" class="btn btn-info">See updates</a> </td>
                             </tr>
                             @endforeach
                         </table>
@@ -102,7 +103,13 @@
                                 </tr>
                                @foreach($comp as $c)    
                                 <tr>
-                                    <td> {{ $c }}</td>
+                                    <td> {{ $c->name }}</td>
+                                
+                                    <td>
+                                        <a href="/update/{{ $c->id }}/create" class="btn btn-info">
+                                            Post new Update
+                                        </a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </table>

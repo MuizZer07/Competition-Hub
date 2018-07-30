@@ -3,21 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Update;
-use DB;
 
-class UpdatesController extends Controller
+class UserPreferenceController extends Controller
 {
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -33,10 +21,9 @@ class UpdatesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        $competition_id = $id;
-        return view('pages.update.create')->with('competition_id', $competition_id);
+        //
     }
 
     /**
@@ -45,14 +32,9 @@ class UpdatesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        $update = new Update;
-        $update->post = $request->get('post');
-        $update->competition_id = $id;
-        $update->save();
-
-        return redirect('home')->with('success', 'Update posted!');
+        //
     }
 
     /**
@@ -63,9 +45,7 @@ class UpdatesController extends Controller
      */
     public function show($id)
     {
-        $updates = DB::Table('updates')   
-                    ->where('competition_id', $id)->get();
-        return view('pages.update.show')->with('updates', $updates);
+        //
     }
 
     /**
