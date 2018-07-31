@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Competition;
 
 class PagesController extends Controller
 {
     public function index(){
-        return view('pages.index');
+        $competitions = Competition::all();
+        return view('pages.index')->with('competitions', $competitions);
     }
 }
