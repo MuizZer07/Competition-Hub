@@ -57,9 +57,9 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                <a class="btn btn-primary" href="{{ route('google.login') }}">
+                                <!-- <a class="btn btn-primary" href="{{ route('google.login') }}">
                                     {{ __('Google') }}
-                                </a>
+                                </a> -->
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>

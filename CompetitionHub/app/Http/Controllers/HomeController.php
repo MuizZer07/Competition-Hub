@@ -39,4 +39,8 @@ class HomeController extends Controller
                         ->pluck('competitions.name')->all();
         return view('home')->with(['teams' => $teams, 'competitions' => $competitions, 'comp'=> $comp]);
     }
+
+    public function profile(){
+        return view('pages.user.profile');
+    }
 }

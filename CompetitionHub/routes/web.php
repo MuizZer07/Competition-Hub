@@ -18,8 +18,11 @@ Route::get('/', 'PagesController@index');
 # User Authentication Routes
 Auth::routes();
 
+Route::get('/chlogout', 'Auth\\LoginController@chlogout')->name('chlogout');
+
 # User Routes
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile', 'HomeController@profile');
 
 # Competition Routes
 Route::resource('/competitions', 'CompetitionController');
@@ -52,7 +55,7 @@ Route::get('/organizers/save/{organizerteam_id}', 'OrganizersController@store');
 # Email Verification
  Route::get('/verify/{token}', 'VerifyController@verify')->name('verify');
 
- #Facebook
+ #Google
 
  Route::get('login/google', 'Auth\LoginController@redirectToProvider')->name('google.login');
-Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
+use App\User;
+use Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -43,22 +46,74 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function redirectToProvider()
+    public function redirectToProvider($provider='google')
     {
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver($provider)->redirect();
     }
+
 
     /**
      * Obtain the user information from google.
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback($provider="google")
+    {
+        $user = Socialite::driver($provider)->user();
+
+        $userData = [
+            'name' => $user->name,
+            'email' => $user->email
+        ];
+
+        return view('auth.register', compact('userData'));
+        //dd($user);
+        //$authUser = $this->findOrCreateUser($user, $provider);
+        //Auth::login($authUser, true);
+
+       
+       // return redirect($this->redirectTo);
+    
+        // $token = $user->token;
+        // $user->getName();
+        // echo  $user->getName();
+
+    }
+
+    
+    public function fetchgoogleDataCallback($user)
     {
         $user = Socialite::driver('google')->user();
+        
+        $userData = [
+            'name' => $user->name,
+            'email' => $user->email
+        ];
 
-        $token = $user->token;
-        $user->getName();
-        echo  $user->getName();
+        dd($userData);
+
+        return view('auth.register', compact('userData'));
+
+    }
+
+
+
+    public function findOrCreateUser($user, $provider)
+    {
+        $authUser = User::where('provider_id', $user->id)->first();
+        if ($authUser) {
+            return $authUser;
+        }
+        return User::create([
+            'name'     => $user->name,
+            'email'    => $user->email,
+            'provider' => $provider,
+            'provider_id' => $user->id
+        ]);
+    }
+
+    public function chlogout() {
+        Auth::logout();
+        return true;
     }
 }

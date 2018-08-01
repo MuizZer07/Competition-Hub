@@ -101,14 +101,20 @@ class CompetitionController extends Controller
       }catch(\Exception $e){
         $history = null;
       }
-      return view('pages.competition.show')->with([
+    //   return view('pages.competition.show')->with([
+    //     'competition'=> $competition,
+    //     'history'=> $history,
+    //     'catagory'=> $catagory
+    // ]);
+      
+ //   }
+    return view('pages.competition.show1')->with([
         'competition'=> $competition,
         'history'=> $history,
         'catagory'=> $catagory
-    ]);
+     ]);
       
-    }
-
+}
     /**
      * Show the form for editing the specified resource.
      *
