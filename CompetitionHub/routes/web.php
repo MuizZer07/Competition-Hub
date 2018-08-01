@@ -22,7 +22,12 @@ Route::get('/chlogout', 'Auth\\LoginController@chlogout')->name('chlogout');
 
 # User Routes
 Route::get('/home', 'HomeController@index')->name('home');
+<<<<<<< HEAD
 Route::get('/profile', 'HomeController@profile');
+=======
+Route::get('/profile_edit', 'HomeController@editProfile');
+Route::post('/profile_update', 'HomeController@updateuser');
+>>>>>>> 150722ca27a6b37509966a24698701cd177f5573
 
 # Competition Routes
 Route::resource('/competitions', 'CompetitionController');
@@ -34,6 +39,11 @@ Route::get('/history/all_participants/{competition_id}', 'ParticipationHistoryCo
 
 # Organizer Team Routes
 Route::resource('/organizerteam', 'OrganizerTeamController');
+
+# Update Routes
+Route::get('/update/{competition_id}/show', 'UpdatesController@show');
+Route::get('/update/{competition_id}/create', 'UpdatesController@create');
+Route::post('/update/{competition_id}', 'UpdatesController@store'); 
 
 # Organizers Routes
 Route::resource('/organizers', 'OrganizersController');
@@ -55,7 +65,13 @@ Route::get('/organizers/save/{organizerteam_id}', 'OrganizersController@store');
 # Email Verification
  Route::get('/verify/{token}', 'VerifyController@verify')->name('verify');
 
+<<<<<<< HEAD
  #Google
 
  Route::get('login/google', 'Auth\LoginController@redirectToProvider')->name('google.login');
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+=======
+# Facebook
+Route::get('login/google', 'Auth\LoginController@redirectToProvider')->name('google.login');
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
+>>>>>>> 150722ca27a6b37509966a24698701cd177f5573

@@ -36,15 +36,11 @@ class OrganizersController extends Controller
      */
     public function create($id)
     {
-        // $users = DB::select("select u.name from users u join organizers o
-        //                     on u.id != o.user_id
-        //                     and o.organizer_team_id = ".$id);
         
         $user = DB::table('users')->join('organizers', 'id', 'organizers.user_id')
                                    ->where('organizer_team_id', $id)->pluck('name')
                                    ->all(); 
         $users = DB::table('users')->whereNotIn('name', $user)->get();
-        // $users = User::all();
         return view('pages.organizer.create')->with(['users' => $users, 'id'=> $id]);
     }
 

@@ -13,7 +13,6 @@
                 'multiple' => 'multiple', 'id'=>'users'
             ]) !!}
         </div>
-        {{ Form::hidden('usersss', $users) }}
         {{ Form::submit('Submit', ['class'=>'btn btn-primary']) }}
     {!! Form::close() !!}
     </div>

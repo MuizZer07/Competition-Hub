@@ -26,204 +26,38 @@
            <div class="container">
                <div class="row">
                    <div id="content-block" class="col-sm-9 col-md-9">
-                      
-
-                       <div id="real-content">
+                        <div id="real-content">
                            <div class="row">
-                               <div class="col-md-6 score-card">
-                                   <h4>IRELAND A IN BANGLADESH TEST</h4>
-                                   <div class="details">
-                                       <p><span>Oct 10-13, 2017</span>- at Harare Sports Club</p>
-                                       
-                                       <h4>Ireland A <span>255</span></h4>
-                                       <h4>Bangladesh A <span>38/1 (13 ov)</span></h4>
-                                       
-                                       <p>
-                                           <strong>
-                                               Stumps - Bangladesh A trail by 217 runs with 9 wickets remaining in the 1st innings
-                                           </strong>
-                                       </p>
-                                       
-                                       <div>
-                                           <a href="">live scorecard</a>
-                                           <a href="">report</a>
-                                           <a href="">tour home</a>
-                                       </div>
-                                   </div>
-                               </div>
-                               
-                               <div class="col-md-6 score-card">
-                                   <h4>NEW ZEALAND A IN INDIA</h4>
-                                   <div class="details">
-                                       <p><span>Oct 10-13, 2017</span>- at Harare Sports Club</p>
-                                       
-                                       <h4>Ireland A <span>255</span></h4>
-                                       <h4>Bangladesh A <span>38/1 (13 ov)</span></h4>
-                                       
-                                       <p>
-                                           <strong>
-                                               Stumps - Bangladesh A trail by 217 runs with 9 wickets remaining in the 1st innings
-                                           </strong>
-                                       </p>
-                                       
-                                       <div>
-                                           <a href="">live scorecard</a>
-                                           <a href="">report</a>
-                                           <a href="">tour home</a>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                           
-                           <hr>
-                           
-                           <div class="row">
-                               <div class="col-md-6 score-card">
-                                   <h4>SRI LANKA A IN WEST INDIES</h4>
-                                   <div class="details">
-                                       <p><span>Oct 10-13, 2017</span>- at Harare Sports Club</p>
-                                       
-                                       <h4>Ireland A <span>255</span></h4>
-                                       <h4>Bangladesh A <span>38/1 (13 ov)</span></h4>
-                                       
-                                       <p>
-                                           <strong>
-                                               Stumps - Bangladesh A trail by 217 runs with 9 wickets remaining in the 1st innings
-                                           </strong>
-                                       </p>
-                                       
-                                       <div>
-                                           <a href="">live scorecard</a>
-                                           <a href="">report</a>
-                                           <a href="">tour home</a>
-                                       </div>
-                                   </div>
-                               </div>
-                               
-                               <div class="col-md-6 score-card">
-                                   <h4>JLT ONE-DAY CUP</h4>
-                                   <div class="details">
-                                       <p><span>Oct 10-13, 2017</span>- at Harare Sports Club</p>
-                                       
-                                       <h4>Ireland A <span>255</span></h4>
-                                       <h4>Bangladesh A <span>38/1 (13 ov)</span></h4>
-                                       
-                                       <p>
-                                           <strong>
-                                               Stumps - Bangladesh A trail by 217 runs with 9 wickets remaining in the 1st innings
-                                           </strong>
-                                       </p>
-                                       
-                                       <div>
-                                           <a href="">live scorecard</a>
-                                           <a href="">report</a>
-                                           <a href="">tour home</a>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                           
-                           <hr>
-                           
-                           <div class="row">
-                               <div class="col-md-6 score-card">
-                                   <h4>IRELAND A IN BANGLADESH TEST</h4>
-                                   <div class="details">
-                                       <p><span>Oct 10-13, 2017</span>- at Harare Sports Club</p>
-                                       
-                                       <h4>Ireland A <span>255</span></h4>
-                                       <h4>Bangladesh A <span>38/1 (13 ov)</span></h4>
-                                       
-                                       <p>
-                                           <strong>
-                                               Stumps - Bangladesh A trail by 217 runs with 9 wickets remaining in the 1st innings
-                                           </strong>
-                                       </p>
-                                       
-                                       <div>
-                                           <a href="">live scorecard</a>
-                                           <a href="">report</a>
-                                           <a href="">tour home</a>
-                                       </div>
-                                   </div>
-                               </div>
-                               
-                               <div class="col-md-6 score-card">
-                                   <h4>NEW ZEALAND A IN INDIA</h4>
-                                   <div class="details">
-                                       <p><span>Oct 10-13, 2017</span>- at Harare Sports Club</p>
-                                       
-                                       <h4>Ireland A <span>255</span></h4>
-                                       <h4>Bangladesh A <span>38/1 (13 ov)</span></h4>
-                                       
-                                       <p>
-                                           <strong>
-                                               Stumps - Bangladesh A trail by 217 runs with 9 wickets remaining in the 1st innings
-                                           </strong>
-                                       </p>
-                                       
-                                       <div>
-                                           <a href="">live scorecard</a>
-                                           <a href="">report</a>
-                                           <a href="">tour home</a>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                           
-                           <hr>
-                           
-                           <div class="row">
-                               <div class="col-md-6 score-card">
-                                   <h4>SRI LANKA A IN WEST INDIES</h4>
-                                   <div class="details">
-                                       <p><span>Oct 10-13, 2017</span>- at Harare Sports Club</p>
-                                       
-                                       <h4>Ireland A <span>255</span></h4>
-                                       <h4>Bangladesh A <span>38/1 (13 ov)</span></h4>
-                                       
-                                       <p>
-                                           <strong>
-                                               Stumps - Bangladesh A trail by 217 runs with 9 wickets remaining in the 1st innings
-                                           </strong>
-                                       </p>
-                                       
-                                       <div>
-                                           <a href="">live scorecard</a>
-                                           <a href="">report</a>
-                                           <a href="">tour home</a>
-                                       </div>
-                                   </div>
-                               </div>
-                               
-                               <div class="col-md-6 score-card">
-                                   <h4>JLT ONE-DAY CUP</h4>
-                                   <div class="details">
-                                       <p><span>Oct 10-13, 2017</span>- at Harare Sports Club</p>
-                                       
-                                       <h4>Ireland A <span>255</span></h4>
-                                       <h4>Bangladesh A <span>38/1 (13 ov)</span></h4>
-                                       
-                                       <p>
-                                           <strong>
-                                               Stumps - Bangladesh A trail by 217 runs with 9 wickets remaining in the 1st innings
-                                           </strong>
-                                       </p>
-                                       
-                                       <div>
-                                           <a href="">live scorecard</a>
-                                           <a href="">report</a>
-                                           <a href="">tour home</a>
-                                       </div>
-                                   </div>
-                               </div>
+                                @if(count($competitions)>0)   
+                                    @foreach($competitions as $competition)
+                                        <div class="col-md-6 score-card">
+                                            <h4>{{ $competition->name }}</h4>
+                                            <div class="details">
+                                                <p><span>{{ $competition->event_date }}</span>- at {{ $competition->venue }}</p>
+                                                
+                                                <h4> {{ $competition->description }}</h4>
+                                                
+                                                <p>
+                                                    <strong>
+                                                            Registration Deadline: {{ $competition->reg_deadline }} 
+                                                        </strong>
+                                                </p>
+                                                
+                                                <div>
+                                                    <a href=""> Participate </a>
+                                                    <a href=""> View Event Page</a>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                        </div>
+                                    @endforeach
+                                @endif
                            </div>
                        </div>
                    </div>
-
                </div>
            </div>
-       </section> <!--   end content area     -->
+       </section> 
    </body>
  
 @endsection
