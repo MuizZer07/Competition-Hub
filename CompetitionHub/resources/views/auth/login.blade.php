@@ -57,13 +57,29 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                <!-- <a class="btn btn-primary" href="{{ route('google.login') }}">
-                                    {{ __('Google') }}
-                                </a> -->
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             </div>
+                        </div>
+                        <hr>
+                        <div class="form-group text-center">
+                            <label class="control-label"><b> Or Login With </b></label><br>
+                                        {{-- <a href="{{ url('login/facebook')}}" class="btn btn-social-icon btn-facebook"  style="Background-color: #0043ff; color:white">
+                                            <i class="fa fa-facebook">
+                                                 Facebook 
+                                                </i>
+                                        </a> --}}
+                                        <a href="{{ url('login/google')}}" class="btn btn-social-icon btn-google-plus btn-danger">
+                                            {{-- <i class="fa fa-google-plus"> --}}
+                                                 Google 
+                                                {{-- </i> --}}
+                                        </a>
+                                        {{-- <a href="{{ url('login/linkedin')}}" class="btn btn-social-icon btn-linkedin" style="Background-color: black; color:white">
+                                            <i class="fa fa-linkedin"> 
+                                                Linkedin
+                                             </i>
+                                        </a>     --}}
                         </div>
                     </form>
                 </div>

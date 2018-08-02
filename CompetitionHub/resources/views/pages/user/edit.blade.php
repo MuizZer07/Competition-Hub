@@ -21,9 +21,21 @@
             {{ Form::text('institution', $user->phone_number ,['class'=>'form-control', 'placeholder'=>'Institution'])}}
         </div>
         <div class="form-group">
+                {{ Form::label('position','Concentration')}}
+                {{ Form::text('position', $user->phone_number ,['class'=>'form-control', 'placeholder'=>'Concentration'])}}
+            </div>
+        <div class="form-group">
+                {{ Form::label('duration','Duration')}}
+                {{ Form::text('duration', $user->phone_number ,['class'=>'form-control', 'placeholder'=>'Time duraiton in your Institution'])}}
+        </div>
+        <div class="form-group">
             {{ Form::label('occupation','Occupation')}}
             {{ Form::text('occupation', $user->occupation ,['class'=>'form-control', 'placeholder'=>'Occupation'])}}
         </div>
+        <div class="form-group">
+                {{ Form::label('address','Address')}}
+                {{ Form::textarea('address', $user->about ,['class'=>'form-control', 'placeholder'=>'Address'])}}
+        </div>        
         <div class="form-group">
             {{ Form::label('website','Website')}}
             {{ Form::text('website', $user->website ,['class'=>'form-control', 'placeholder'=>'Website'])}}

@@ -20,15 +20,6 @@ class ParticipationTableCreate extends Migration
             $table->integer('competition_id')->unsigned();
 
             $table->primary(['participant_id', 'competition_id']);
-            $table->foreign('participant_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
-
-            $table->foreign('competition_id')
-                ->references('id')
-                ->on('competitions')
-                ->onDelete('cascade');
         });
 
     }

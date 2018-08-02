@@ -7,10 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <a href="{{ route('google.login', ['google']) }}">Google</a>
-                    
-                    <!-- <a href="{{ route('google.login', ['linkedin']) }}">Linked</a> -->
+                <div class="card-body">                 
                     @if(isset($userData))
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                         @csrf
@@ -20,7 +17,7 @@
 
                             <div class="col-md-6">
                                 <input id="name" value="{{ $userData['name'] }}" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
+      
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -134,6 +131,25 @@
                                     {{ __('Register') }}
                                 </button>
                             </div>
+                        </div>
+                        <hr>
+                        <div class="form-group text-center">
+                                <label class="control-label"><b> Or Register With </b></label><br>
+                                            {{-- <a href="{{ url('login/facebook')}}" class="btn btn-social-icon btn-facebook" style="Background-color: #0043ff; color:white">
+                                                <i class="fa fa-facebook">
+                                                     Facebook 
+                                                    </i>
+                                            </a> --}}
+                                            <a href="{{ url('login/google')}}" class="btn btn-social-icon btn-google-plus btn-danger">
+                                                {{-- <i class="fa fa-google-plus"> --}}
+                                                     Google 
+                                                    {{-- </i> --}}
+                                            </a>
+                                            {{-- <a href="{{ url('login/linkedin')}}" class="btn btn-social-icon btn-linkedin" style="Background-color: black; color:white">
+                                                <i class="fa fa-linkedin"> 
+                                                    Linkedin
+                                                 </i>
+                                            </a>     --}}
                         </div>
                     </form>
                     @endif

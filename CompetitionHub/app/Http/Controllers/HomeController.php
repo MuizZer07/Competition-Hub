@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\User;
 use App\Catagory;
 use App\Organizer;
 use App\OrganizerTeam;
@@ -43,10 +44,18 @@ class HomeController extends Controller
         return view('home')->with(['teams' => $teams, 'competitions' => $competitions, 'comp'=> $comp]);
     }
 
-<<<<<<< HEAD
-    public function profile(){
-        return view('pages.user.profile');
-=======
+    /**
+     * User Profile Page
+     * 
+     */
+    public function profile($id){
+        $user = User::find($id);
+        $teams = DB::select('Select * from organizer_teams join organizers where id = organizer_team_id and user_id = '.$id);
+        $competitions = DB::select('select * from competitions c join (select p.competition_id from participation_histories p where p.participant_id = '.$id.') p on c.id = p.competition_id');
+
+        return view('pages.user.profile')->with(['competitions' => $competitions, 'teams' => $teams, 'user'=> $user]);
+    }
+    
     /**
      * Edit all the information of the current user
      *
@@ -69,7 +78,10 @@ class HomeController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->phone_number = $request->input('phone');
+        $user->address = $request->input('address');
         $user->institution = $request->input('institution');
+        $user->position = $request->input('position');
+        $user->duration = $request->input('duration');
         $user->occupation = $request->input('occupation');
         $user->website = $request->input('website');
         $user->about = $request->input('about');
@@ -88,6 +100,14 @@ class HomeController extends Controller
         
         # redirecting to the dashboard
         return redirect('home')->with('success', 'Profile Updated!');
->>>>>>> 150722ca27a6b37509966a24698701cd177f5573
+    }
+
+    /**
+     * User Settings Page
+     * 
+     */
+    public function settings(){
+        $user = auth()->user();
+        return view('pages.user.settings')->with('user', $user);
     }
 }

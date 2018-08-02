@@ -14,7 +14,10 @@ class AddAttributesToUser extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->string('position')->nullable();
+            $table->string('duration')->nullable();
             $table->string('phone_number')->nullable();
+            $table->mediumText('address')->nullable();
             $table->mediumText('about')->nullable();
             $table->string('institution')->nullable();
             $table->string('occupation')->nullable();

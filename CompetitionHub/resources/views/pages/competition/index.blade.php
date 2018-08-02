@@ -2,7 +2,6 @@
 
 
 @section('content')
-      
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-5 col-md-6 card" style="padding: 10px">
@@ -27,7 +26,7 @@
                                 @break
                             @endif
                         @endforeach
-                        <a class="btn btn-default" href="#"> See all </a>
+                        <a class="btn btn-default" href="/competitions/top_competitons"> See all </a>
                     @endif
             </div>
             <div class="col-sm-5 col-md-6 card" style="padding: 10px">
@@ -52,10 +51,11 @@
                                 @endif
                                 @endforeach
                         </div>
-                        <a class="btn btn-default" href="#"> See all </a>
+                        <a class="btn btn-default" href="/competitions/top_competitons_by_catagory"> See all </a>
             </div>
         </div>
         <br>
+        
         {{-- <div class="row">
                 <div class="col-sm-5 col-md-6 card" style="padding: 10px">
                         <h3 class="card-title text-center"> Registration Deadlines </h3><hr>

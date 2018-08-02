@@ -14,15 +14,6 @@ class UpdateOrganizersTable extends Migration
     {
         Schema::table('organizers', function (Blueprint $table) {
             $table->primary(['user_id', 'organizer_team_id']);
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
-
-            $table->foreign('organizer_team_id')
-                ->references('id')
-                ->on('organizer_teams')
-                ->onDelete('cascade');
         });
     }
 

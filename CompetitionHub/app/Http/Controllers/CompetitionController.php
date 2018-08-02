@@ -20,7 +20,7 @@ class CompetitionController extends Controller
     public function __construct()
     {
         $this->middleware('auth',[
-            'except' => ['index', 'show']
+            'except' => ['index', 'show', 'all']
         ]);
     }
     /**
@@ -101,14 +101,8 @@ class CompetitionController extends Controller
       }catch(\Exception $e){
         $history = null;
       }
-    //   return view('pages.competition.show')->with([
-    //     'competition'=> $competition,
-    //     'history'=> $history,
-    //     'catagory'=> $catagory
-    // ]);
-      
- //   }
-    return view('pages.competition.show1')->with([
+
+    return view('pages.competition.show')->with([
         'competition'=> $competition,
         'history'=> $history,
         'catagory'=> $catagory
@@ -169,4 +163,27 @@ class CompetitionController extends Controller
         return redirect('/competitions')->with('success', 'Competition Removed!');
     
     }
+
+    /**
+     * Shows all the competitions.
+     */
+    public function allCompetitions()
+    {
+        $competitions = Competition::all();
+        $catagories = Catagory::all();
+        return view('pages.competition.all')->with(['competitions'=> $competitions, 'catagories'=> $catagories]);
+  
+    }
+
+    /**
+     * Shows all the competitions by catagory.
+     */
+    public function allCompetitionsByCatagory()
+    {
+        $competitions = Competition::all();
+        $catagories = Catagory::all();
+        return view('pages.competition.catagorical')->with(['competitions'=> $competitions, 'catagories'=> $catagories]);
+  
+    }
+
 }
