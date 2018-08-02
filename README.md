@@ -7,6 +7,7 @@
 - Admin authentications
 - Confirmation mail
 - Gmail login integrations
+- Notifications for updates, adding members to a team
 
 ::::: Need Fixes
 - dropdown select return index (competition_create, organizers_add)
@@ -16,7 +17,7 @@
 - Admin Dashboard
 - Query table instance create, edit, update
 - Minor changes in Database
-- Notifications
+- Notifications for upcoming competitions
 - Unit testing
 - AI implementation
 - populating Database

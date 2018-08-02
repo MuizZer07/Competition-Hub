@@ -35,4 +35,12 @@ class User extends Authenticatable
     public function sendEmailNotification(){
         $this->notify(new VerifyEmail($this));
     }
+
+    public function setName($name){
+        $this->name = $name;
+    }
+
+    public function getName(){
+        return $this->name;
+    }
 }
