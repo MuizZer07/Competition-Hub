@@ -35,6 +35,29 @@
                       <a class="nav-link" style="color: white" href="{{ route('register') }}">{{ __('Register') }}</a>
                   </li>
               @else
+
+                  <li class="nav-item dropdown">
+                    <a id="navbarDropdown" style="color: white" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        Notificaitons 
+                        @if(auth()->user()->unreadNotifications->count() >0)
+                            <span class="badge badge-light">
+                                    {{ auth()->user()->unreadNotifications->count() }}
+                            </span>                            
+                    @endif
+                    </a>
+                    
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a  class="dropdown-item"href=" {{ route('markAsRead') }}"> <span class="badge badge-light"> Mark all as Read</span> </a>
+                        {{-- App\Notifications\updatePostNotification --}}
+                        @foreach(auth()->user()->unreadNotifications as $notification)
+                            <a class="dropdown-item" href="#" style="background-color: #1c0a7c40"> {{ $notification->data['data'] }} </a>
+                        @endforeach
+                        @foreach(auth()->user()->readNotifications as $notification)
+                           <a class="dropdown-item" href="#"> {{ $notification->data['data'] }} </a>
+                        @endforeach 
+                    </div>
+                </li>
+
                   <li class="nav-item dropdown">
                       <a id="navbarDropdown" style="color: white" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                           {{ Auth::user()->name }} <span class="caret"></span>
@@ -49,7 +72,6 @@
                                             document.getElementById('logout-form').submit();">
                               {{ __('Logout') }}
                           </a> 
-                          {{-- <a class="dropdown-item" href="{{ route('chlogout')}}">Logout</a> --}}
 
                           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                               @csrf

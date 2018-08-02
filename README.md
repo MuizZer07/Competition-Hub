@@ -6,25 +6,25 @@
 - User Authentications
 - Admin authentications
 - Confirmation mail
+- Gmail login integrations
 
 ::::: Need Fixes
 - dropdown select return index (competition_create, organizers_add)
 
 ::::: Yet to do
-- FB/Gmail integrations
-- Query, Updates table instance create, edit, update
+- Commenting
+- Admin Dashboard
+- Query table instance create, edit, update
 - Minor changes in Database
-- Add more Users Table attribute 
-- User Profile creation
 - Notifications
-- Server hosting
 - Unit testing
+- AI implementation
 - populating Database
+- Google Maps for competition venue
+- Competition viewing page with Poster/Banner
 
 ::::: Front End Specs
 - recommendations
 - Smart search
-- Website Home Page View
-- Google Maps
 
 21.07.18

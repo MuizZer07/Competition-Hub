@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\NotificationController;
 use Illuminate\Http\Request;
 use App\User;
 use App\Organizer;
@@ -63,6 +64,8 @@ class OrganizersController extends Controller
             $organizer->user_id = $user;
             $organizer->organizer_team_id =  $id;
             $organizer->save();
+
+            NotificationController::addedOrganizerMember($user, $id);
         }
 
         return redirect('/home')->with('success', 'Organizer(s) Added!');

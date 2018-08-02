@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Update;
 use DB;
+use App\Http\Controllers\NotificationController;
 
 class UpdatesController extends Controller
 {
@@ -51,6 +52,9 @@ class UpdatesController extends Controller
         $update->post = $request->get('post');
         $update->competition_id = $id;
         $update->save();
+
+        NotificationController::updatePost($id);
+
 
         return redirect('home')->with('success', 'Update posted!');
     }

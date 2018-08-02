@@ -68,3 +68,10 @@ Route::get('/organizers/save/{organizerteam_id}', 'OrganizersController@store');
 # Socialite
 Route::get('/login/{social}', 'Auth\LoginController@socialLogin')->where('social', 'twitter|facebook|linkedin|google|github');
 Route::get('/login/{social}/callback', 'Auth\LoginController@handleProviderCallback')->where('social', 'twitter|facebook|linkedin|google|github');
+
+# Notifications
+Route::get('member_added', 'NotificationController@addedOrganizerMember')->name('MemberAddedNotification');
+Route::get('markasread', 'NotificationController@MarkasRead')->name('markAsRead');
+Route::get('update_notificaiton', 'NotificationController@updatePost');
+
+
