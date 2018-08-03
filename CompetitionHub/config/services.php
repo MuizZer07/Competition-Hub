@@ -41,4 +41,11 @@ return [
         'redirect' => 'http://ch.me/login/google/callback',
     ],
 
+    'linkedin' => [
+        'client_id' =>'81xffwl50trg1t',  // Your Google Client ID
+        'client_secret' =>'bq0qgSALEUkK0A3N', // Your Google Client Secret
+        'redirect' => 'http://ch.me/login/linkedin/callback',
+
+    ],
+
 ];
