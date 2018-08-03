@@ -111,8 +111,10 @@ class OrganizersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user_id, $organizer_team_id)
     {
-        //
+        $organizer = Organizer::where(['user_id'=> $user_id, 'organizer_team_id' => $organizer_team_id]);
+        $organizer->delete();
+        return redirect('/organizerteam/'.$organizer_team_id)->with('success', 'Member Removed!');
     }
 }

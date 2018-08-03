@@ -22,7 +22,7 @@
 - AI implementation
 - populating Database
 - Google Maps for competition venue
-- Competition viewing page with Poster/Banner
+- Include Competition Poster/Banner
 
 ::::: Front End Specs
 - recommendations

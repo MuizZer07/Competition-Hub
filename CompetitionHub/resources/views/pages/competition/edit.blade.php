@@ -22,7 +22,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="/competitions" class="btn btn-default"> Go Back </a>
     <h1>Edit</h1>
     {!! Form::open(['action'=> ['CompetitionController@update', $competition->id], 'method'=>'POST']) !!}
         <div class="form-group">
@@ -48,5 +47,4 @@
         {{ Form::hidden('_method', 'PUT') }}
         {{ Form::submit('Submit', ['class'=>'btn btn-primary']) }}
     {!! Form::close() !!}
-    
 @endsection

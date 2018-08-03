@@ -25,7 +25,7 @@ class CompetitionController extends Controller
         ]);
     }
     /**
-     * Display a listing of the resource.
+     * Display competitions in a sorted way
      *
      * @return \Illuminate\Http\Response
      */
@@ -77,7 +77,7 @@ class CompetitionController extends Controller
         $competition->catagory_id = $request->input('catagory')+1;
         $competition->save();
 
-        return redirect('/competitions')->with('success', 'competition Created!');
+        return redirect('home')->with('success', 'competition Created!');
     }
 
     /**
@@ -149,7 +149,7 @@ class CompetitionController extends Controller
         $competition->reg_deadline = $request->input('reg_deadline');
         $competition->save();
 
-        return redirect('/competitions')->with('success', 'competition Updated!');
+        return redirect('home')->with('success', 'competition Updated!');
     }
 
     /**
@@ -163,7 +163,7 @@ class CompetitionController extends Controller
         $competition = Competition::find($id);
         
         $competition->delete();
-        return redirect('/competitions')->with('success', 'Competition Removed!');
+        return redirect('/home')->with('success', 'Competition Removed!');
     
     }
 

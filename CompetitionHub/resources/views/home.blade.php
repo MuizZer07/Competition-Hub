@@ -108,14 +108,26 @@
                                 <tr>
                                     <th>Competition Name</th>
                                     <th></th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                                @foreach($comp as $c)    
                                 <tr>
-                                    <td> {{ $c->name }}</td>
+                                    <td> <a href="/competitions/{{ $c->id }}" >{{ $c->name }} </a></td>
                                 
+                                    <td>
+                                        <a href="/competitions/{{ $c->id }}/edit" class="btn btn-info">
+                                            Edit
+                                        </a>
+                                    </td>
                                     <td>
                                         <a href="/update/{{ $c->id }}/create" class="btn btn-info">
                                             Post new Update
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="/competitions/{{ $c->id }}/delete" class="btn btn-danger">
+                                            Delete
                                         </a>
                                     </td>
                                 </tr>

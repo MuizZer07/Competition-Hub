@@ -75,11 +75,11 @@
                                                  Google 
                                                 {{-- </i> --}}
                                         </a>
-                                        {{-- <a href="{{ url('login/linkedin')}}" class="btn btn-social-icon btn-linkedin" style="Background-color: black; color:white">
-                                            <i class="fa fa-linkedin"> 
+                                        <a href="{{ url('login/linkedin')}}" class="btn btn-social-icon btn-linkedin" style="Background-color: black; color:white">
+                                            {{-- <i class="fa fa-linkedin">  --}}
                                                 Linkedin
-                                             </i>
-                                        </a>     --}}
+                                             {{-- </i> --}}
+                                        </a>    
                         </div>
                     </form>
                 </div>

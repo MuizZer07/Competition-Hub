@@ -30,6 +30,7 @@ Route::get('/settings', 'HomeController@settings');
 # Competition Routes
 Route::get('/competitions/top_competitons', 'CompetitionController@allCompetitions');
 Route::get('/competitions/top_competitons_by_catagory', 'CompetitionController@allCompetitionsByCatagory');
+Route::get('/competitions/{competition_id}/delete', 'CompetitionController@destroy');
 Route::resource('/competitions', 'CompetitionController');
 
 # Participation History Routes
@@ -47,6 +48,7 @@ Route::post('/update/{competition_id}', 'UpdatesController@store');
 
 # Organizers Routes
 Route::resource('/organizers', 'OrganizersController');
+Route::get('/organizers/delete/{user_id}/{organizer_team_id}', 'OrganizersController@destroy'); 
 Route::get('/organizers/create/{organizerteam_id}', 'OrganizersController@create'); 
 Route::get('/organizers/save/{organizerteam_id}', 'OrganizersController@store'); 
 

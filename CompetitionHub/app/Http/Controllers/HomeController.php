@@ -43,7 +43,9 @@ class HomeController extends Controller
                         ->where('user_id', $ID)->get();
 
         
-        $string = "Your profile is not completed! Following feilds are required: ";
+
+        # profile information checking 
+        $string = "";
         if($user->position == null || $user->duration == null || $user->institution == null){
            $string = $string.'Current education status, ';
         }
@@ -62,6 +64,11 @@ class HomeController extends Controller
         if($user->website == null){
             $string = $string.'Website, ';
         }
+
+        if($string != null){
+            $string = 'Your profile is not completed! Following feilds are required: '.$string;
+        }
+
            
         # shows the dashboard to the user
         return view('home')->with(['teams' => $teams, 'competitions' => $competitions, 
