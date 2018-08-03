@@ -8,6 +8,7 @@ use App\ParticipationHistory;
 use App\Organizers;
 use App\OrganizerTeam;
 use App\Catagory;
+use App\Update;
 use DB;
 
 class CompetitionController extends Controller
@@ -20,7 +21,7 @@ class CompetitionController extends Controller
     public function __construct()
     {
         $this->middleware('auth',[
-            'except' => ['index', 'show', 'all']
+            'except' => ['index', 'show', 'allCompetitions', 'allCompetitionsByCatagory']
         ]);
     }
     /**
@@ -90,6 +91,7 @@ class CompetitionController extends Controller
       $competition = Competition::find($id);
       $catagory_id = $competition->catagory_id;
       $catagory = Catagory::find($catagory_id);
+      $updates = Update::where('competition_id', $id)->get();
 
       try{
         $history = ParticipationHistory::where([
@@ -102,10 +104,11 @@ class CompetitionController extends Controller
         $history = null;
       }
 
-    return view('pages.competition.show')->with([
+    return view('pages.competition.show1')->with([
         'competition'=> $competition,
         'history'=> $history,
-        'catagory'=> $catagory
+        'catagory'=> $catagory,
+        'updates' => $updates
      ]);
       
 }

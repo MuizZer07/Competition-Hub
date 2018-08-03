@@ -32,7 +32,8 @@ class HomeController extends Controller
     public function index()
     {
         # database query to show all the organizer teams, participating competitions, organizing competitions of the current user
-        $ID = auth()->user()->id;
+        $user = auth()->user();
+        $ID = $user->id;
         $teams = DB::select('Select * from organizer_teams join organizers where id = organizer_team_id and user_id = '.$ID);
         $competitions_id = ParticipationHistory::pluck('competition_id')->where('participant_id', $ID);
 
@@ -40,8 +41,31 @@ class HomeController extends Controller
         $comp = DB::table('organizers')
                         ->join('competitions', 'organizers.organizer_team_id', 'competitions.organizer_teams_id')
                         ->where('user_id', $ID)->get();
-        # shows the dashboard for the user
-        return view('home')->with(['teams' => $teams, 'competitions' => $competitions, 'comp'=> $comp]);
+
+        
+        $string = "Your profile is not completed! Following feilds are required: ";
+        if($user->position == null || $user->duration == null || $user->institution == null){
+           $string = $string.'Current education status, ';
+        }
+        if($user->phone_number == null){
+            $string = $string.'Phone Number, ';
+        }
+        if($user->address == null){
+        $string = $string.'Address, ';
+        }
+        if($user->about == null){
+        $string = $string.'About, ';
+        }
+        if($user->occupation == null){
+            $string = $string.'Occupation, ';
+        }
+        if($user->website == null){
+            $string = $string.'Website, ';
+        }
+           
+        # shows the dashboard to the user
+        return view('home')->with(['teams' => $teams, 'competitions' => $competitions, 
+                    'comp'=> $comp, 'error' => $string]);
     }
 
     /**

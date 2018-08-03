@@ -8,8 +8,8 @@
             <div class="card-body">
                 <a href="/home" class="btn btn-default"> Go Back </a>
                 <h1> {{ $team->name }} Members: </h1>
-                
-
+                <small> {{ $team->description }} </small>
+                <hr>
                 <table class="table table-striped">
                         <tr>
                             <th> Name </th>

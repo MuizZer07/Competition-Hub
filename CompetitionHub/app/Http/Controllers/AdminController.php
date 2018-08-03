@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Competition;
+use App\ParticipationHistory;
+use App\Organizer;
 
 class AdminController extends Controller
 {
@@ -23,7 +27,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $users = User::all();
+        $competitions = Competition::all();
+        $history = ParticipationHistory::all();
+        $organizers = Organizer::all();
+        return view('admin.home')->with(['competitions' => $competitions, 
+                    'users'=> $users, 'history' => $history, 'organizers' => $organizers]);
     }
     
 }

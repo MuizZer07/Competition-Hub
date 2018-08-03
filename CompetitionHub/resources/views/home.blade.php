@@ -4,9 +4,17 @@
 <div class="container">
         
             @if(auth()->user()->token != null)
-            <div class="alert alert-danger" role="alert">
-                Please Verify your Email Account. 
-            </div>
+                <div class="alert alert-danger" role="alert">
+                    Please Verify your Email Account. 
+                </div>
+            @endif
+
+            @if($error != null)
+                <div class="alert alert-danger" role="alert">
+                    {{ $error }}<hr>
+                    <a href="/{{auth()->user()->id}}/profile_edit" class="btn btn-danger"> Edit Your Profile </a>
+                    <a href="/{{auth()->user()->id}}/profile" class="btn btn-danger"> See Your Profile </a>
+                </div>
             @endif
         
     <div class="row justify-content">
