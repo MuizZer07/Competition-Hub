@@ -54,9 +54,9 @@ class ParticipationHistoryController extends Controller
         $history->competition_id =  $request->input('competition_id');
         $history->save();
 
-        return redirect('/competitions')->with('success', 'You are successfully registered in the competition!');
+        return redirect('/competitions/'.$history->competition_id)->with('success', 'You are successfully registered in the competition!');
         } catch (\Exception $e) {
-            return redirect('/competitions')->with('error', 'You have already registered as a participant in this competition');
+            return redirect('/competitions/')->with('error', 'You have already registered as a participant in this competition');
 
         } 
     }
@@ -72,9 +72,9 @@ class ParticipationHistoryController extends Controller
         
     }
 
+    # shows all participants of a competitions
     public function showallparticipants($competition_id)
     {
-        // $history = ParticipationHistory::where('competition_id', $competition_id)->get();
         $users = DB::Table('users')
                     ->join('participation_histories', 'id', 'participant_id')
                     ->where('competition_id', $competition_id)->get();
@@ -111,8 +111,10 @@ class ParticipationHistoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user_id, $competition_id)
     {
-        //
+        $history = ParticipationHistory::where(['participant_id' => $user_id, 'competition_id' => $competition_id]);
+        $history->delete();
+        return redirect('/home')->with('success', 'Participation Canceled!');
     }
 }

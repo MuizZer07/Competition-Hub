@@ -16,7 +16,7 @@ class DBoperations{
         if($this->isUserExist($username, $email)){
                 return 0;
         }else{
-            $pass = md5($password);
+            $pass = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $this->con->prepare("INSERT INTO `users` (`id`, `name`, `email`, 
                             `password`, `remember_token`, `created_at`, `updated_at`, 
                             `token`, `position`, `duration`, `phone_number`, `address`,
@@ -37,14 +37,14 @@ class DBoperations{
     }
 
     public function userLogin($email, $password){
-        $password = md5($password);
-        $stmt = $this->con->prepare("select id from users where email = ? and
-                                    password = ?");
+        $user = $this->getUserByEmail($email);
+        $pass = $user['password'];
 
-        $stmt->bind_param("ss", $email, $password);
-        $stmt->execute();
-        $stmt->store_result();
-        return $stmt->num_rows > 0;
+        if(password_verify($password, $pass)){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public function getUserByEmail($email){
@@ -52,11 +52,12 @@ class DBoperations{
         $stmt->bind_param("s", $email);
         $stmt->execute();
         return $stmt->get_result()->fetch_assoc();
-
     }
 
     public function getAllCompetitions(){
-        $stmt = $this->con->prepare("select * from competitions");
+        $today = date("Y-m-d");
+        $stmt = $this->con->prepare("select * from competitions where event_date >= ?");
+        $stmt->bind_param("s", $today);
         $stmt->execute();
         return $stmt->get_result()->fetch_all();
     }
@@ -83,6 +84,38 @@ class DBoperations{
         $stmt->execute();
         $stmt->store_result();
         return $stmt->num_rows > 0;
+    }
+
+    public function checkDeadline($competition_id){
+        $today = date("Y-m-d");
+        $stmt = $this->con->prepare("select reg_deadline from competitions where id = ?");
+        $stmt->bind_param("s", $competition_id);
+        $stmt->execute();
+        $stmt->bind_result($deadline);
+        $stmt->fetch();
+        if($deadline <= $today){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function editProfile($user_id, $name, $position, $duration,
+                             $phn, $address, $about, $ins, $occ, $web){
+        $stmt = $this->con->prepare("update users set name = ?, position = ?, duration = ?, phone_number = ?,
+                                    address = ?, about = ?, institution = ?, occupation = ?, website = ?
+                              where id = ?");
+        $stmt->bind_param("ssssssssss", $name, $position, $duration,
+                                 $phn, $address, $about, $ins, $occ, $web, $user_id);
+        return $stmt->execute();
+    }
+
+
+    public function cancelParticipation($user_id, $competition_id){
+        $stmt = $this->con->prepare("delete from participation_histories where
+                                participant_id = ? and competition_id = ?");
+        $stmt->bind_param("ss", $user_id, $competition_id);
+        return $stmt->execute();
     }
 
 

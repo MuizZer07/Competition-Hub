@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import javax.security.auth.login.LoginException;
 
+// shows profile attibutes
 public class profileActivity extends AppCompatActivity {
 
     private TextView textDetails;
@@ -21,14 +22,17 @@ public class profileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        // if anyone is not logged in, it will redirect to the login screen
         if(!SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
             startActivity(new Intent(getApplicationContext(), loginActivity.class));
         }
 
+        // initializing
         textDetails = (TextView) findViewById(R.id.textDetails);
         fabEdit = findViewById(R.id.fabEdit);
 
+        // getting the values from stored data of the logged in user
         String name = SharedPrefManager.getInstance(this).getUserName();
         String email = SharedPrefManager.getInstance(this).getUserEmail();
         String ins = SharedPrefManager.getInstance(this).getInstitution();
@@ -46,14 +50,18 @@ public class profileActivity extends AppCompatActivity {
 
         textDetails.setText(details);
 
+        // profile edit button action listener
         fabEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // it will open the profile edit screen
+                finish();
+                startActivity(new Intent(getApplicationContext(), EditProfileActivity.class));
             }
         });
     }
 
+    // menu item select action listener
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){

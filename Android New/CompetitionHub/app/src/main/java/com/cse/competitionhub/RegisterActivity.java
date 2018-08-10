@@ -27,6 +27,7 @@ import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Map;
 
+// registers a user with validation
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText editTextUsername, editTextEmail, editTextPassword;
@@ -38,12 +39,14 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        // if anyone is logged in, it will redirect to the profile screen
         if(SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
             startActivity(new Intent(getApplicationContext(), profileActivity.class));
             return;
         }
 
+        // initializing
         editTextUsername = (EditText) findViewById(R.id.editTextUsername);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
@@ -51,14 +54,17 @@ public class RegisterActivity extends AppCompatActivity {
         buttonRegister = (Button) findViewById(R.id.btnRegister);
         progressDialog = new ProgressDialog(this);
 
+        // action lister for register button
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // registers a user to the database, also validates
                 registerUser();
             }
         });
     }
 
+    // registers a user to the database, also validates
     private void registerUser(){
         final String name = editTextUsername.getText().toString().trim();
         final String email = editTextEmail.getText().toString().trim();
@@ -74,10 +80,12 @@ public class RegisterActivity extends AppCompatActivity {
                         progressDialog.dismiss();
 
                         try {
+                            // creating a JSONObject with the response
                             JSONObject jsonObject = new JSONObject(response);
 
                             Toast.makeText(getApplicationContext(),  jsonObject.getString("message"), Toast.LENGTH_LONG).show();
 
+                            // redirects to login page, user needs to login after registration with his/her new account
                             finish();
                             startActivity(new Intent(getApplicationContext(), loginActivity.class));
                         } catch (JSONException e) {
@@ -88,11 +96,13 @@ public class RegisterActivity extends AppCompatActivity {
                 },
                 new Response.ErrorListener() {
                     @Override
+                    // error handler, if there is any error to fetch the response from the request
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.hide();
                         Toast.makeText( getApplicationContext(),  error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }){
+            // parameters for POST requests
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();

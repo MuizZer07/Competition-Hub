@@ -9,6 +9,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
+//  a singleton class to make the database connection
 public class RequestHandler {
     private static RequestHandler mInstance;
     private RequestQueue mRequestQueue;

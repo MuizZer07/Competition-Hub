@@ -26,6 +26,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
+        <Button
+            android:layout_marginLeft="10dp"
+            android:padding="5dp"
+            android:background="#ff2323"
+            android:id="@+id/btnCancelParticipation"
+            android:text="Cancel Participation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
     <TextView

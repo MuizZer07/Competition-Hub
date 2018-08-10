@@ -10,6 +10,7 @@ use App\OrganizerTeam;
 use App\Catagory;
 use App\Update;
 use DB;
+use Carbon\Carbon;
 
 class CompetitionController extends Controller
 {
@@ -31,9 +32,13 @@ class CompetitionController extends Controller
      */
     public function index()
     { 
-        $competitions = Competition::all();
+        $date = Carbon::today()->format('Y-m-d');
+        $competitions = DB::Table('competitions')->whereDate('event_date', '>=', $date)->get();
         $catagories = Catagory::all();
-        return view('pages.competition.index')->with(['competitions'=> $competitions, 'catagories'=> $catagories]);
+        return view('pages.competition.index')->with(['competitions'=> $competitions,
+                 'catagories'=> $catagories,
+                 'date'=> $date
+                 ]);
     }
 
     /**
@@ -88,7 +93,13 @@ class CompetitionController extends Controller
      */
     public function show($id)
     {
+      $date = Carbon::today()->format('Y-m-d');
       $competition = Competition::find($id);
+
+      $flag = false;
+      if($competition->reg_deadline <= $date){
+        $flag = true;
+      }
       $catagory_id = $competition->catagory_id;
       $catagory = Catagory::find($catagory_id);
       $updates = Update::where('competition_id', $id)->get();
@@ -108,7 +119,8 @@ class CompetitionController extends Controller
         'competition'=> $competition,
         'history'=> $history,
         'catagory'=> $catagory,
-        'updates' => $updates
+        'updates' => $updates,
+        'flag' => $flag
      ]);
       
 }
@@ -161,7 +173,6 @@ class CompetitionController extends Controller
     public function destroy($id)
     {
         $competition = Competition::find($id);
-        
         $competition->delete();
         return redirect('/home')->with('success', 'Competition Removed!');
     
@@ -172,10 +183,10 @@ class CompetitionController extends Controller
      */
     public function allCompetitions()
     {
-        $competitions = Competition::all();
+        $date = Carbon::today()->format('Y-m-d');
+        $competitions = DB::Table('competitions')->whereDate('event_date', '>=', $date)->get();
         $catagories = Catagory::all();
         return view('pages.competition.all')->with(['competitions'=> $competitions, 'catagories'=> $catagories]);
-  
     }
 
     /**
@@ -183,7 +194,8 @@ class CompetitionController extends Controller
      */
     public function allCompetitionsByCatagory()
     {
-        $competitions = Competition::all();
+        $date = Carbon::today()->format('Y-m-d');
+        $competitions = DB::Table('competitions')->whereDate('event_date', '>=', $date)->get();
         $catagories = Catagory::all();
         return view('pages.competition.catagorical')->with(['competitions'=> $competitions, 'catagories'=> $catagories]);
   

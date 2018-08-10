@@ -44,8 +44,7 @@
                                                 </p>
                                                 
                                                 <div>
-                                                    <a href=""> Participate </a>
-                                                    <a href=""> View Event Page</a>
+                                                <a href="/competitions/{{ $competition->id}}"> View Event Page</a>
                                                 </div>
                                             </div>
                                             <hr>

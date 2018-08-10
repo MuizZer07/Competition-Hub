@@ -21,7 +21,8 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".loginActivity" />
         <activity android:name=".profileActivity" />
-        <activity android:name=".CompetitionActivity"></activity>
+        <activity android:name=".CompetitionActivity" />
+        <activity android:name=".EditProfileActivity"></activity>
     </application>
 
 </manifest>

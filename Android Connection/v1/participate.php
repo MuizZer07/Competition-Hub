@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if(!$db->isParticipating($_POST['participant_id'], $_POST['competition_id'])){
             if($db->createParticipationHistory($_POST['participant_id'], $_POST['competition_id'])){
                 $response['error'] = false;
-                $response['message'] = "Succuess";   
+                $response['message'] = "Success";   
             }else{
                 $response['error'] = true;
                 $response['message'] = "Something's Wrong";   

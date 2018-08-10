@@ -11,9 +11,19 @@ public class Competition implements Serializable {
     private String reg_deadline;
     private String description;
     private int catagory_id;
-    protected int organizer_id;
+    private int organizer_id;
+    private boolean isDeadlineOver;
 
-    public Competition(int id, String name, String venue, String event_date, String reg_deadline, String description, int catagory_id, int organizer_id) {
+    public boolean isDeadlineOver() {
+        return isDeadlineOver;
+    }
+
+    public void setDeadlineOver(boolean deadlineOver) {
+        isDeadlineOver = deadlineOver;
+    }
+
+    public Competition(int id, String name, String venue, String event_date, String reg_deadline,
+                       String description, int catagory_id, int organizer_id, boolean isDeadlineOver) {
         this.id = id;
         this.name = name;
         this.venue = venue;
@@ -22,6 +32,7 @@ public class Competition implements Serializable {
         this.description = description;
         this.catagory_id = catagory_id;
         this.organizer_id = organizer_id;
+        this.isDeadlineOver = isDeadlineOver;
     }
 
     public String getDescription() {

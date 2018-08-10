@@ -28,7 +28,7 @@ import java.util.Map;
 public class CompetitionActivity extends AppCompatActivity {
 
     TextView textViewDetails, textviewFlag;
-    Button btnParticipate;
+    Button btnParticipate, btnCancelParticipation;
     private ProgressDialog progressDialog;
     int id;
     @Override
@@ -37,6 +37,7 @@ public class CompetitionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_competition);
 
         btnParticipate = (Button) findViewById(R.id.btnParticipate);
+        btnCancelParticipation = (Button) findViewById(R.id.btnCancelParticipation);
         textviewFlag = (TextView) findViewById(R.id.textviewFlag);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
@@ -62,7 +63,84 @@ public class CompetitionActivity extends AppCompatActivity {
                 createParticipationHistory(id, competition.getId());
             }
         });
+
+
+        if(!SharedPrefManager.getInstance(this).isLoggedIn()){
+            if(competition.isDeadlineOver()){
+                btnParticipate.setVisibility(View.GONE);
+                btnCancelParticipation.setVisibility(View.GONE);
+
+                textviewFlag.setText("SORRY! Registration Deadline is Over!");
+            }else{
+                btnParticipate.setVisibility(View.GONE);
+                btnCancelParticipation.setVisibility(View.GONE);
+                textviewFlag.setText("Please Login to Participate!");
+
+                textviewFlag.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(getApplicationContext(), loginActivity.class);
+                        startActivity(i);
+                    }
+                });
+            }
+        }
+
+        btnCancelParticipation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cancelParticipation(id, competition.getId());
+            }
+        });
+
     }
+
+    private void cancelParticipation(int participant_id1, int competition_id1){
+        final String participant_id = Integer.toString(participant_id1);
+        final String competition_id = Integer.toString(competition_id1);
+        progressDialog.show();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                Constants.URL_CANCEL_PARTICIPATION,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            Toast.makeText(getApplicationContext(),  jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+
+                            finish();
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        } catch (JSONException e) {
+                            Toast.makeText( getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.hide();
+                        Toast.makeText( getApplicationContext(),  error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("participant_id", participant_id);
+                params.put("competition_id", competition_id);
+
+                return params;
+            }
+        };
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+    }
+
+
+
+
     private void createParticipationHistory(int participant_id1, int competition_id1){
         final String participant_id = Integer.toString(participant_id1);
         final String competition_id = Integer.toString(competition_id1);
@@ -123,6 +201,8 @@ public class CompetitionActivity extends AppCompatActivity {
                             if(jsonObject.getBoolean("participation")){
                                 btnParticipate.setVisibility(View.GONE);
                                 textviewFlag.setText("You are already participating in this competition!");
+                            }else{
+                                btnCancelParticipation.setVisibility(View.GONE);
                             }
                         } catch (JSONException e) {
                             Toast.makeText( getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();

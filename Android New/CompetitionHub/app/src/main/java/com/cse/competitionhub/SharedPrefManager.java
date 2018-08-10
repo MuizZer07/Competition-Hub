@@ -10,6 +10,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
+// stores all the information for a user
 public class SharedPrefManager {
     private static SharedPrefManager mInstance;
     private static Context mCtx;
@@ -38,6 +39,7 @@ public class SharedPrefManager {
         return mInstance;
     }
 
+    // stores all the information of a user, user log in
     public boolean userLogin(int id, String name, String email, String position, String duration, String phn, String address,
                            String about, String ins, String occ, String web){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
@@ -60,6 +62,7 @@ public class SharedPrefManager {
         return true;
     }
 
+    // checking if anyone is logged in or not
     public boolean isLoggedIn(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         if(sharedPreferences.getString(KEY_USERNAME, null) != null){
@@ -68,6 +71,7 @@ public class SharedPrefManager {
         return false;
     }
 
+    // deletes all the stored information, user logout
     public boolean logout(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -78,6 +82,7 @@ public class SharedPrefManager {
         return true;
     }
 
+    // ALL GETTERS //
     public int getID(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getInt(KEY_ID, 0);

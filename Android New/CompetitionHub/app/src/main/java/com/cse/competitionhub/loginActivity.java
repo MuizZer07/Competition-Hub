@@ -23,6 +23,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+// shows login form, verifies and logs in a user
 public class loginActivity extends AppCompatActivity {
 
     private EditText editTextEmail, editTextPassword;
@@ -35,12 +36,14 @@ public class loginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // if anyone is logged in, it will redirect to the profile screen
         if(SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
             startActivity(new Intent(getApplicationContext(), profileActivity.class));
             return;
         }
 
+        // initializing
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
 
@@ -48,24 +51,33 @@ public class loginActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please Wait...");
 
+        // action lister for register button
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // verify a user with information in the database
+                // logs in the user to the app
+                // store information as shared preference in the phone
                 loginUser();
             }
         });
 
         textviewRegister = (TextView) findViewById(R.id.textviewRegister);
 
+        // action lister for register/sign up text
         textviewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // redirects to register screen
+                finish();
                 startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
             }
         });
     }
 
-
+    // verify a user with information in the database
+    // logs in the user to the app
+    // store information as shared preference in the phone
     private void loginUser(){
         final String email = editTextEmail.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
@@ -81,6 +93,7 @@ public class loginActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
 
+                            // extracting information from JSONObject and calling the login function
                             if(!jsonObject.getBoolean("error")){
                                 SharedPrefManager.getInstance(getApplicationContext())
                                         .userLogin(
@@ -98,6 +111,7 @@ public class loginActivity extends AppCompatActivity {
                                                 );
                                 Toast.makeText( getApplicationContext(), "User Login Successful", Toast.LENGTH_LONG).show();
 
+                                // redirects to main activity after login
                                 finish();
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             }else{
@@ -116,6 +130,7 @@ public class loginActivity extends AppCompatActivity {
                         Toast.makeText( getApplicationContext(),  error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }){
+            // parameters for POST request
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();

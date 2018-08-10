@@ -18,7 +18,7 @@
             @endif
         
     <div class="row justify-content">
-        <div class="col-md-7">
+        <div class="col-md-6">
             <div class="card">
 
                 <div class="card-body">
@@ -58,7 +58,7 @@
         </div>
     </div>
 
-    <div class="col-md-5">
+    <div class="col-md-6">
             <div class="card">
                     <div class="card-body">
                         @if (session('status'))
@@ -75,12 +75,14 @@
                                 <th>Competition Name</th>
                                 <th>Date</th>
                                 <th></th>
+                                <th></th>
                             </tr>
                             @foreach($competitions as $competition)
                             <tr>
                                 <td> {{ $competition->name }}</td>
                                 <td> {{ $competition->event_date }}</td>
-                            <td> <a href="/update/{{ $competition->id }}/show" class="btn btn-info">See updates</a> </td>
+                                <td> <a href="/update/{{ $competition->id }}/show" class="btn btn-info">See updates</a> </td>
+                            <td> <a href="/history/delete/{{auth()->user()->id}}/{{ $competition->id }}" class="btn btn-danger">Cancel Paricipation</a> </td>
                             </tr>
                             @endforeach
                         </table>
@@ -92,7 +94,7 @@
         </div>
 </div><br>
 <div class="row justify-content">
-        <div class="col-md-7">
+        <div class="col-md-6">
             <div class="card">
                     <div class="card-body">
                             @if (session('status'))

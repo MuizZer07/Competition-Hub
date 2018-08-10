@@ -19,6 +19,11 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
         $response['description'] = $competition[5];
         $response['catagory_id'] = $competition[6];
         $response['organizer_id'] = $competition[7];
+        if($db->checkDeadline($competition[0])){
+            $response['isDeadlineOver'] = true;
+        }else{
+            $response['isDeadlineOver'] = false;
+        }
 
         array_push($response_collection, $response);
     }

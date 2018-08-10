@@ -37,6 +37,7 @@ Route::resource('/competitions', 'CompetitionController');
 Route::resource('/history', 'ParticipationHistoryController');
 Route::get('/history/all_participants/{competition_id}', 'ParticipationHistoryController@showallparticipants');
 Route::get('/history/all_participants/{competition_id}', 'ParticipationHistoryController@showallparticipants');
+Route::get('/history/delete/{participant_id}/{competition_id}', 'ParticipationHistoryController@destroy');
 
 # Organizer Team Routes
 Route::resource('/organizerteam', 'OrganizerTeamController');
@@ -75,5 +76,6 @@ Route::get('/login/{social}/callback', 'Auth\LoginController@handleProviderCallb
 Route::get('member_added', 'NotificationController@addedOrganizerMember')->name('MemberAddedNotification');
 Route::get('markasread', 'NotificationController@MarkasRead')->name('markAsRead');
 Route::get('update_notificaiton', 'NotificationController@updatePost');
+Route::get('event_alert', 'NotificationController@EventAlert')->name('event_alert');
 
 
