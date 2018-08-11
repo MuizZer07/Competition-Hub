@@ -27,5 +27,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    // Volley REST API
     implementation 'com.android.volley:volley:1.1.1'
+    // Google Vision API
+    implementation 'com.google.android.gms:play-services-vision:9.8.0'
 }

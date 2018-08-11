@@ -4,10 +4,12 @@ package com.cse.competitionhub;
 public class Constants {
 
     // setting the IP Address, this will vary every time when the internet is connected to different network
-    private static final String IP_ADDRESS = "http://192.168.1.102/";
+//    private static final String IP_ADDRESS = "http://192.168.1.102/";
+    private static final String IP_ADDRESS = "https://competitionhub.000webhostapp.com/";
 
     // directory to the php scripts for making requests
-    private static final String ROOT_URL = "nsu.summer.2018.cse327.2.team10/Android Connection/v1/";
+//    private static final String ROOT_URL = "nsu.summer.2018.cse327.2.team10/Android Connection/v1/";
+    private static final String ROOT_URL = "v1/";
 
     // complete url to find the php scripts
     public static final String URL_REGISTER = IP_ADDRESS + ROOT_URL + "registerUser.php";

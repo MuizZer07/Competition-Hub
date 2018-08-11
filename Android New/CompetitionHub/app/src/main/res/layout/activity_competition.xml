@@ -11,6 +11,7 @@
         android:padding="5dp"
         android:layout_height="wrap_content"
         android:textSize="18sp"
+        android:maxHeight="400dp"
         android:id="@+id/textviewDetails"/>
 
     <LinearLayout
