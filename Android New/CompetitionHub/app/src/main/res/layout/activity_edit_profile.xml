@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".EditProfileActivity">
+
+    <LinearLayout
+        android:id="@+id/nameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Name: "
+            android:layout_width="75dp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="300dp"
+            android:hint="Enter Your name"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/positionLayout"
+        android:layout_below="@+id/nameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Position: "
+            android:layout_width="75dp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/editTextPosition"
+            android:layout_width="300dp"
+            android:hint="Position at your institution"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/DurationLayout"
+        android:layout_below="@+id/positionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Duration: "
+            android:layout_width="75dp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/editTextDuration"
+            android:layout_width="300dp"
+            android:hint="Duration"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/PhoneLayout"
+        android:layout_below="@+id/DurationLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Phone Number: "
+            android:layout_width="75dp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/editTextPhone"
+            android:layout_width="300dp"
+            android:hint="Enter Your Phone Number"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/AddressLayout"
+        android:layout_below="@+id/PhoneLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Address: "
+            android:layout_width="75dp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/editTextAddress"
+            android:layout_width="300dp"
+            android:hint="Enter Your Address"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/AboutLayout"
+        android:layout_below="@+id/AddressLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="About: "
+            android:layout_width="75dp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/editTextAbout"
+            android:layout_width="300dp"
+            android:hint="Write something about you"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/InstitutionLayout"
+        android:layout_below="@+id/AboutLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Institution: "
+            android:layout_width="75dp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/editTextInstitution"
+            android:layout_width="300dp"
+            android:hint="Enter Your Institution name"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/OccupationLayout"
+        android:layout_below="@+id/InstitutionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Occupation: "
+            android:layout_width="75dp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/editTextOccupation"
+            android:layout_width="300dp"
+            android:hint="Enter Your Occupation"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/WebsiteLayout"
+        android:layout_below="@+id/OccupationLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Website: "
+            android:layout_width="75dp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/editTextWebsite"
+            android:layout_width="300dp"
+            android:hint="Website URL"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <Button
+        android:layout_below="@+id/WebsiteLayout"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/btnSave"
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

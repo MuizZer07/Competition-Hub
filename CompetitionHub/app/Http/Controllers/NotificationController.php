@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Notifications\added_to_an_organizer_team;
 use App\Notifications\updatePostNotification;
+use App\Notifications\EventAlert;
 use App\ParticipationHistory;
+use Carbon\Carbon;
+use DB;
 
 class NotificationController extends Controller
 {
@@ -26,6 +29,19 @@ class NotificationController extends Controller
         foreach($users as $user_id){
             User::find($user_id)->notify(new updatePostNotification($competition_id));
         }
+    }
 
+    public static function EventAlert(){
+        $date = Carbon::today()->format('Y-m-d');
+        $user_id = auth()->user()->id;
+        $competitions = DB::table('participation_histories')
+                            ->join('competitions', 'competition_id', 'id')
+                            ->where('participant_id', $user_id)->get();
+
+        foreach($competitions as $competition){
+            if($competition->event_date == $date){
+                User::find($user_id)->notify(new EventAlert($competition, $date));
+            }
+        }
     }
 }

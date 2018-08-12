@@ -11,6 +11,7 @@ use App\OrganizerTeam;
 use App\Competition;
 use App\ParticipationHistory;
 use App\UserPreference;
+use App\Http\Controllers\NotificationController;
 
 class HomeController extends Controller
 {
@@ -69,6 +70,8 @@ class HomeController extends Controller
             $string = 'Your profile is not completed! Following feilds are required: '.$string;
         }
 
+        # Alerts the user if he is participating a competition on the current date
+        NotificationController::EventAlert();
            
         # shows the dashboard to the user
         return view('home')->with(['teams' => $teams, 'competitions' => $competitions, 

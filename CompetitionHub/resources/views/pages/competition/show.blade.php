@@ -9,7 +9,8 @@
                     Catagory: {{ $catagory->name }} <br>
                     Venue: {{ $competition->venue }} <br>
                     Event Date: {{ $competition->event_date }} <br>
-                <b> Registration Deadline: {{ $competition->reg_deadline}} </b><br><br>
+                <b> Registration Deadline: {{ $competition->reg_deadline}} </b>
+                <br><br>
                     Description: {{ $competition->description}}
             </p>
             <hr>
