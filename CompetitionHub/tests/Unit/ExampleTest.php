@@ -11,11 +11,11 @@ class ExampleTest extends TestCase
      * A basic test example.
      *
      * @return void
-     */
-    public function testBasicTest()
-    {
-        $this->assertTrue(true);
-    }
+    
+        public function testBasicTest()
+        {
+            $this->assertTrue(true);
+        }*/
 
     public function test_Displays_Home_Page()
     {
@@ -23,7 +23,7 @@ class ExampleTest extends TestCase
       $this-> see('Competition'); 
     }
 
-    public function see()
+    public function see($text)
     {
         $crawler = $this -> client -> getCrawler();
         $found = $crawler-> filter("body:contains('{$text}')");
