@@ -16,4 +16,18 @@ class ExampleTest extends TestCase
     {
         $this->assertTrue(true);
     }
+
+    public function test_Displays_Home_Page()
+    {
+      $this-> call('GET','/');
+      $this-> see('Competition'); 
+    }
+
+    public function see()
+    {
+        $crawler = $this -> client -> getCrawler();
+        $found = $crawler-> filter("body:contains('{$text}')");
+
+        $this-> assertGreaterThan(0,count($found), "Expected To see {$text} in the view");
+    }
 }
