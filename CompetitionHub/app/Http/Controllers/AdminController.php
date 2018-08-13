@@ -45,6 +45,18 @@ class AdminController extends Controller
                     'users'=> $users, 'history' => $history, 'organizers' => $organizers]);
     }
 
+    public function allcomp()
+    {
+        $users = User::all();
+        $competitions = Competition::all();
+        $history = ParticipationHistory::all();
+        $organizers = Organizer::all();
+        return view('admin.allcomp')->with(['competitions' => $competitions, 
+                    'users'=> $users, 'history' => $history, 'organizers' => $organizers]);
+    }
+
+
+
 
     
 }

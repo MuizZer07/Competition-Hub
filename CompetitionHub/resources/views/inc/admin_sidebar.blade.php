@@ -10,7 +10,7 @@
             <a class="nav-link" href="/admin/allusers"> All Users</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#"> All Competitions </a>
+            <a class="nav-link" href="/admin/allcomp"> All Competitions </a>
         </li>
         <li class="nav-item">
                 <a class="nav-link" href="#"> Create Catagory </a>
