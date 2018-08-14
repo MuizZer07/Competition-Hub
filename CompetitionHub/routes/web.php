@@ -61,6 +61,9 @@ Route::get('/organizers/save/{organizerteam_id}', 'OrganizersController@store');
 
 # Admin Authentication Routes...
  Route::get('admin/home', 'AdminController@index');
+ Route::get('admin/allusers', 'AdminController@allusers');
+ Route::get('admin/allcomp', 'AdminController@allcomp');
+
  $this->get('admin', 'Admin\LoginController@showLoginForm')->name('admin.login');
  $this->post('admin', 'Admin\LoginController@login');
  $this->post('logout', 'Admin\LoginController@logout')->name('logout');

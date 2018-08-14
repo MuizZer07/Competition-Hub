@@ -34,5 +34,29 @@ class AdminController extends Controller
         return view('admin.home')->with(['competitions' => $competitions, 
                     'users'=> $users, 'history' => $history, 'organizers' => $organizers]);
     }
+
+    public function allusers()
+    {
+        $users = User::all();
+        $competitions = Competition::all();
+        $history = ParticipationHistory::all();
+        $organizers = Organizer::all();
+        return view('admin.allusers')->with(['competitions' => $competitions, 
+                    'users'=> $users, 'history' => $history, 'organizers' => $organizers]);
+    }
+
+    public function allcomp()
+    {
+        $users = User::all();
+        $competitions = Competition::all();
+        $history = ParticipationHistory::all();
+        $organizers = Organizer::all();
+        return view('admin.allcomp')->with(['competitions' => $competitions, 
+                    'users'=> $users, 'history' => $history, 'organizers' => $organizers]);
+    }
+
+
+
+
     
 }
