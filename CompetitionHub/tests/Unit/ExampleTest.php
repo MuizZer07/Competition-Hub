@@ -9,19 +9,32 @@ class ExampleTest extends TestCase
 {
    
     
-    /**
-     * A basic test example.
-     *
-     * @return void
-        
-    */
-
-
-    public function test_Displays_Home_Page()
+    public function testSomethingIsTrue()
     {
-      $response = $this->call('GET','/');
+        $this->assertTrue(true);
+    }
 
-      $this->assertTrue(strpos($response-> getContent(),'CompetitionHub') !== false);
+
+    public function UserRouteTest()
+    {
+      $response = $this->call('GET', 'user/profile');
+      $response = $this->call($method, $uri, $parameters, $cookies, $files, $server, $content);
+
+      $this->assertEquals('Personal Information', $response->getContent());
+    }
+
+    public function ViewDataTest()
+    {
+        $this->call('GET', '/');
+
+        $this->assertViewHas('name');
+    }
+    
+    public function SessionDataTest()
+    {
+        $this->call('GET', '/');
+
+        $this->assertSessionHas('name');
     }
 
 

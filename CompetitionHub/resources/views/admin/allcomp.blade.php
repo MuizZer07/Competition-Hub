@@ -8,8 +8,8 @@
 
 <div class="card">
         <div class="card-body">
-        <h1 class="card-title">
-            All Competition Information:</h1>
+        <h3 class="card-title">
+            All Competition Information:</h3>
             @if(count($competitions)>0)
                 <p class="card-text">
                 
