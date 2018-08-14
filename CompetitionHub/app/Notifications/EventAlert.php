@@ -58,7 +58,8 @@ class EventAlert extends Notification
     public function toArray($notifiable)
     {
         return [
-            'data' => $this->competition->name.' is today. ('.$this->date.')'
+            'data' => $this->competition->name.' is today. ('.$this->date.')',
+            'id' => $this->competition->id
         ];
     }
 }

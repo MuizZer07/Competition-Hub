@@ -41,7 +41,7 @@ class OrganizersController extends Controller
         $user = DB::table('users')->join('organizers', 'id', 'organizers.user_id')
                                    ->where('organizer_team_id', $id)->pluck('name')
                                    ->all(); 
-        $users = DB::table('users')->whereNotIn('name', $user)->get();
+        $users = DB::table('users')->whereNotIn('name', $user)->pluck('name')->all();
         return view('pages.organizer.create')->with(['users' => $users, 'id'=> $id]);
     }
 
@@ -54,18 +54,19 @@ class OrganizersController extends Controller
     public function store(Request $request, $id)
     {
         $this->validate($request,[
-            'users' => 'required'
+            'user' => 'required'
         ]);
 
-        $users_id = $request->input('users');
-        // throw new \Exception($request->get('usersss'));
-        foreach($users_id as $user){
+        $users = $request->input('user');
+
+        foreach($users as $user){
             $organizer = new Organizer;
-            $organizer->user_id = $user;
+            $user_id = User::where('name', $user)->pluck('id')->all();
+            $organizer->user_id = $user_id[0];
             $organizer->organizer_team_id =  $id;
             $organizer->save();
 
-            NotificationController::addedOrganizerMember($user, $id);
+            NotificationController::addedOrganizerMember($user_id[0], $id);
         }
 
         return redirect('/home')->with('success', 'Organizer(s) Added!');

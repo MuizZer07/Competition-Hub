@@ -59,7 +59,8 @@ class updatePostNotification extends Notification
     {
         $competition = Competition::find($this->competition_id);
         return [
-            'data' => $competition->name.' has a new post.'
+            'data' => $competition->name.' has a new post.',
+            'id' => $competition->id
         ];
     }
 }

@@ -1,5 +1,13 @@
 <?php
 
+/*
+*
+* Middleware Class to communicate with our database
+* Requires DBconnect class 
+* Implements CRUD Database Opetations
+* 
+*/
+
 class DBoperations{
 
     private $con;
@@ -12,6 +20,7 @@ class DBoperations{
         $this->con = $db->connect();
     }
 
+    # creates a new User
     public function createUser($username, $password, $email){
         if($this->isUserExist($username, $email)){
                 return 0;
@@ -36,6 +45,7 @@ class DBoperations{
         
     }
 
+    # verifies a User with email and password
     public function userLogin($email, $password){
         $user = $this->getUserByEmail($email);
         $pass = $user['password'];
@@ -47,6 +57,7 @@ class DBoperations{
         }
     }
 
+    # gets a User by their email address
     public function getUserByEmail($email){
         $stmt = $this->con->prepare("select * from users where email = ?");
         $stmt->bind_param("s", $email);
@@ -54,6 +65,7 @@ class DBoperations{
         return $stmt->get_result()->fetch_assoc();
     }
 
+    # gets all the competitions from the database table
     public function getAllCompetitions(){
         $today = date("Y-m-d");
         $stmt = $this->con->prepare("select * from competitions where event_date >= ?");
@@ -62,6 +74,7 @@ class DBoperations{
         return $stmt->get_result()->fetch_all();
     }
 
+    # creates a row to the participation_histories table in the database
     public function createParticipationHistory($participant_id, $competition_id){
         $stmt = $this->con->prepare("INSERT INTO `participation_histories` (`created_at`, 
                             `updated_at`, `participant_id`, `competition_id`) 
@@ -76,6 +89,7 @@ class DBoperations{
         }
     }
 
+    # checks if a user is participating or not
     public function isParticipating($participant_id, $competition_id){
         $stmt = $this->con->prepare("select * from participation_histories
                  where participant_id = ? and competition_id = ?");
@@ -86,6 +100,7 @@ class DBoperations{
         return $stmt->num_rows > 0;
     }
 
+    # check the deadline is gone or yet to come
     public function checkDeadline($competition_id){
         $today = date("Y-m-d");
         $stmt = $this->con->prepare("select reg_deadline from competitions where id = ?");
@@ -100,6 +115,7 @@ class DBoperations{
         }
     }
 
+    # update a user's information in the database
     public function editProfile($user_id, $name, $position, $duration,
                              $phn, $address, $about, $ins, $occ, $web){
         $stmt = $this->con->prepare("update users set name = ?, position = ?, duration = ?, phone_number = ?,
@@ -110,7 +126,7 @@ class DBoperations{
         return $stmt->execute();
     }
 
-
+    # deletes a row from the participation_histories table in the database
     public function cancelParticipation($user_id, $competition_id){
         $stmt = $this->con->prepare("delete from participation_histories where
                                 participant_id = ? and competition_id = ?");
@@ -118,7 +134,7 @@ class DBoperations{
         return $stmt->execute();
     }
 
-
+    # checks whether the given username and password exists or not
     private function isUserExist($username, $email){
         $stmt = $this->con->prepare("select id from users where name = ? or
                                 email = ?");
@@ -127,5 +143,13 @@ class DBoperations{
         $stmt->execute();
         $stmt->store_result();
         return $stmt->num_rows > 0;
+    }
+
+    # gets all the rows from the notifications table
+    public function getAllNotification($notifiable_id){
+        $stmt = $this->con->prepare("select * from notifications where notifiable_id = ?");
+        $stmt->bind_param("s", $notifiable_id);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all();
     }
 }

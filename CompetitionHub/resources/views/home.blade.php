@@ -82,7 +82,7 @@
                                 <td> {{ $competition->name }}</td>
                                 <td> {{ $competition->event_date }}</td>
                                 <td> <a href="/update/{{ $competition->id }}/show" class="btn btn-info">See updates</a> </td>
-                            <td> <a href="/history/delete/{{auth()->user()->id}}/{{ $competition->id }}" class="btn btn-danger">Cancel Paricipation</a> </td>
+                                <td> <a href="/history/delete/{{auth()->user()->id}}/{{ $competition->id }}" class="btn btn-danger">Cancel Paricipation</a> </td>
                             </tr>
                             @endforeach
                         </table>
@@ -94,7 +94,7 @@
         </div>
 </div><br>
 <div class="row justify-content">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="card">
                     <div class="card-body">
                             @if (session('status'))
@@ -112,6 +112,7 @@
                                     <th></th>
                                     <th></th>
                                     <th></th>
+                                    <th></th>
                                 </tr>
                                @foreach($comp as $c)    
                                 <tr>
@@ -120,6 +121,11 @@
                                     <td>
                                         <a href="/competitions/{{ $c->id }}/edit" class="btn btn-info">
                                             Edit
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="/query/index/{{ $c->id }}" class="btn btn-info">
+                                            Check Queries
                                         </a>
                                     </td>
                                     <td>

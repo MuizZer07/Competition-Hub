@@ -115,19 +115,13 @@
                             
                             <div id="post-area">
                                 <div id="left" class="col-sm-8 col-md-9">
-                                    <form method="post" action="">
-                                        <div class="form-group" style="padding:10px">
-                                            <textarea class="form-control" rows="4">What's on your mind...</textarea>
-                                            <br>
-                                            <button style="display:inline-block" type="submit" class="btn btn-info">Ask A Question to the Organizers</button>
-                                            
-                                            {{-- <label for="file-upload" class="custom-file-upload">
-                                                    <i class="fa fa-camera"></i> <span>photo/video</span>
-                                               </label>
-                                               <input style="display: none;" type="file" id="file-upload" name="" id=""> --}}
-                                           
-                                        </div>
-                                    </form>
+
+                                    {!! Form::open(['action'=> ['QueryController@store', $competition->id], 'method'=>'POST']) !!}
+                                    <div class="form-group">
+                                        {{ Form::textarea('query', '',['class'=>'form-control', 'placeholder'=>'Ask A Question to the Organizers'])}}
+                                    </div>
+                                    <button style="display:inline-block" type="submit" class="btn btn-info">Submit</button>              
+                                    {!! Form::close() !!}
                                     
                                     <hr>
                                     <div id="timeline">

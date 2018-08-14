@@ -16,8 +16,9 @@ class CreateQueriesTable extends Migration
         Schema::create('queries', function (Blueprint $table) {
             $table->increments('id');
             $table->mediumText('query');
-            $table->mediumText('reply');
+            $table->mediumText('reply')->nullable();
             $table->boolean('isReplied');
+            $table->integer('user_id');
             $table->integer('competition_id');
             $table->timestamps();
         });

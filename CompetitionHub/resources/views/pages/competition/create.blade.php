@@ -29,16 +29,26 @@
                 {{ Form::label('description','Description')}}
                 {{ Form::textarea('description', '',['class'=>'form-control', 'placeholder'=>'Write a description'])}}
         </div>
+        {{-- <div class="form-group">
+                {{ Form::label('organizer_team','Orgnizer Team')}}
+                {!! Form::select('organizer_team',  $teams, ['class' => 'form-control'],
+                ['id'=>'users' ], ['value' => $teams[0]]) !!}
+            </div> --}}
         <div class="form-group">
                 {{ Form::label('organizer_team','Orgnizer Team')}}
-                {!! Form::select('organizer_team',  $teams->pluck('name')->all(), ['class' => 'form-control'],
-                ['id'=>'users' ]) !!}
-            </div>
+                
+                <select class ="form-control" id="organizer_team" name="organizer_team" value="{{$teams[0]}}">
+                        @foreach($teams as $team)
+                                <option>{{$team}}</option>
+                        @endforeach
+                </select>
+        </div>
         <div class="form-group">
                 {{ Form::label('catagory','Select Catagory')}}
                 {!! Form::select('catagory',  $catagories->pluck('name')->all(), ['class' => 'form-control'],
                 ['id'=>'catagories' ]) !!}
         </div>
+       
         {{ Form::submit('Submit', ['class'=>'btn btn-primary']) }}
     {!! Form::close() !!}
  </div>

@@ -9,9 +9,14 @@
     {!! Form::open(['action'=> ['OrganizersController@store', $id], 'method'=>'GET']) !!}
         <div class="form-group">
             {{ Form::label('name','Add')}}
-            {!! Form::select('users[]', $users->pluck('name')->all(), ['class' => 'form-control'],[
+            {{-- {!! Form::select('users[]', $users, ['class' => 'form-control'],[
                 'multiple' => 'multiple', 'id'=>'users'
-            ]) !!}
+            ]) !!} --}}
+            <select multiple="multiple" name="user[]" id="user" class ="form-control" value="{{$users[0]}}">
+                @foreach($users as $user)
+                        <option>{{$user}}</option>
+                @endforeach
+            </select>
         </div>
         {{ Form::submit('Submit', ['class'=>'btn btn-primary']) }}
     {!! Form::close() !!}

@@ -1,5 +1,12 @@
 <?php
 
+/*
+*
+* Contains important constants
+* 
+*/
+
+
     define('DB_NAME', 'competitionhub_db');
     define('DB_USER', 'root');
     define('DB_PASSWORD', '');

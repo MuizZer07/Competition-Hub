@@ -48,12 +48,47 @@
                     
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a  class="dropdown-item"href=" {{ route('markAsRead') }}"> <span class="badge badge-light"> Mark all as Read</span> </a>
-                        {{-- App\Notifications\updatePostNotification --}}
                         @foreach(auth()->user()->unreadNotifications as $notification)
-                            <a class="dropdown-item" href="#" style="background-color: #1c0a7c40"> {{ $notification->data['data'] }} </a>
+                            @if($notification->type == 'App\Notifications\updatePostNotification')
+                                <a class="dropdown-item" href="/update/{{ $notification->data['id'] }}/show" style="background-color: #1c0a7c40"> 
+                                    {{ $notification->data['data'] }} </a>
+                            @elseif($notification->type == 'App\Notifications\added_to_an_organizer_team')
+                                    <a class="dropdown-item" href="/organizerteam/{{ $notification->data['id'] }}" style="background-color: #1c0a7c40"> 
+                                        {{ $notification->data['data'] }} </a>  
+                                        {{ $notification->data['data'] }} </a>
+                            @elseif($notification->type == 'App\Notifications\EventAlert')
+                                    <a class="dropdown-item" href="/competitions/{{ $notification->data['id'] }}" style="background-color: #1c0a7c40"> 
+                                        {{ $notification->data['data'] }} </a>   
+                            @elseif($notification->type == 'App\Notifications\QueryRepliedNotification')
+                                    <a class="dropdown-item" href="/query/{{ $notification->data['id'] }}" style="background-color: #1c0a7c40"> 
+                                        {{ $notification->data['data'] }} </a> 
+                            @elseif($notification->type == 'App\Notifications\newNotification')
+                                    <a class="dropdown-item" href="/query/index/{{ $notification->data['id'] }}" style="background-color: #1c0a7c40"> 
+                                        {{ $notification->data['data'] }} </a>    
+                            @else
+                                <a class="dropdown-item" href="#" style="background-color: #1c0a7c40"> 
+                                    {{ $notification->data['data'] }} </a>
+                            @endif
                         @endforeach
                         @foreach(auth()->user()->readNotifications as $notification)
-                           <a class="dropdown-item" href="#"> {{ $notification->data['data'] }} </a>
+                            @if($notification->type == 'App\Notifications\updatePostNotification')
+                               <a class="dropdown-item" href="/update/{{ $notification->data['id'] }}/show">
+                                 {{ $notification->data['data'] }} </a>
+                            @elseif($notification->type == 'App\Notifications\added_to_an_organizer_team')
+                                  <a class="dropdown-item" href="/organizerteam/{{ $notification->data['id'] }}">
+                                     {{ $notification->data['data'] }} </a>   
+                            @elseif($notification->type == 'App\Notifications\EventAlert')
+                                    <a class="dropdown-item" href="/competitions/{{ $notification->data['id'] }}"> 
+                                    {{ $notification->data['data'] }} </a>   
+                            @elseif($notification->type == 'App\Notifications\QueryRepliedNotification')
+                                    <a class="dropdown-item" href="/query/{{ $notification->data['id'] }}"> 
+                                        {{ $notification->data['data'] }} </a>
+                            @elseif($notification->type == 'App\Notifications\newNotification')
+                                    <a class="dropdown-item" href="/query/index/{{ $notification->data['id'] }}"> 
+                                        {{ $notification->data['data'] }} </a>    
+                            @else
+                              <a class="dropdown-item" href="#"> {{ $notification->data['data'] }} </a>
+                            @endif
                         @endforeach 
                     </div>
                 </li>

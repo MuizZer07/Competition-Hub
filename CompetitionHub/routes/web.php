@@ -42,6 +42,12 @@ Route::get('/history/delete/{participant_id}/{competition_id}', 'ParticipationHi
 # Organizer Team Routes
 Route::resource('/organizerteam', 'OrganizerTeamController');
 
+# Query Routes
+Route::post('/query/new/{competition_id}', 'QueryController@store');
+Route::post('/query/update/{id}', 'QueryController@update');
+Route::get('/query/index/{competition_id}', 'QueryController@index');
+Route::get('/query/{id}', 'QueryController@show');
+
 # Update Routes
 Route::get('/update/{competition_id}/show', 'UpdatesController@show');
 Route::get('/update/{competition_id}/create', 'UpdatesController@create');

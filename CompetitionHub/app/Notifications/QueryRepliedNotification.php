@@ -6,11 +6,10 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use App\OrganizerTeam;
 
-class added_to_an_organizer_team extends Notification
+class QueryRepliedNotification extends Notification
 {
-    private $team_id = null;
+    public $id = null;
     use Queueable;
 
     /**
@@ -20,7 +19,7 @@ class added_to_an_organizer_team extends Notification
      */
     public function __construct($id)
     {
-        $this->team_id = $id;
+        $this->id = $id;
     }
 
     /**
@@ -56,10 +55,9 @@ class added_to_an_organizer_team extends Notification
      */
     public function toArray($notifiable)
     {
-        $team = OrganizerTeam::find($this->team_id);
         return [
-            'data' => 'You were added to an organizing team named '.$team->name,
-            'id' => $team->id
+            'data' => 'Your Query has been replied by the organizers',
+            'id' => $this->id
         ];
     }
 }

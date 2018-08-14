@@ -11,6 +11,7 @@ use App\Catagory;
 use App\Update;
 use DB;
 use Carbon\Carbon;
+use App\UserPreference;
 
 class CompetitionController extends Controller
 {
@@ -35,10 +36,22 @@ class CompetitionController extends Controller
         $date = Carbon::today()->format('Y-m-d');
         $competitions = DB::Table('competitions')->whereDate('event_date', '>=', $date)->get();
         $catagories = Catagory::all();
-        return view('pages.competition.index')->with(['competitions'=> $competitions,
-                 'catagories'=> $catagories,
-                 'date'=> $date
-                 ]);
+        $user_preferences = DB::Table('user_preferences')
+                        ->join('catagories', 'catagory_id', 'id')
+                        ->where('user_id', auth()->user()->id)->get();
+
+        if(auth()->user()){ 
+            return view('pages.competition.index_user')->with(['competitions'=> $competitions,
+            'catagories'=> $catagories,
+            'date'=> $date,
+            'preferences'=> $user_preferences
+            ]);
+        }else{
+            return view('pages.competition.index')->with(['competitions'=> $competitions,
+            'catagories'=> $catagories,
+            'date'=> $date
+            ]);
+        }
     }
 
     /**
@@ -50,7 +63,7 @@ class CompetitionController extends Controller
     {
         $catagories = Catagory::all();
         $user = auth()->user()->id;
-        $teams = DB::Table('organizer_teams')->join('organizers', 'id', 'organizers.organizer_team_id')->where('user_id', $user)->get();
+        $teams = DB::Table('organizer_teams')->join('organizers', 'id', 'organizers.organizer_team_id')->where('user_id', $user)->pluck('name')->all();
         return view('pages.competition.create')->with(['teams'=> $teams, 'catagories' => $catagories]);
     }
 
@@ -72,13 +85,16 @@ class CompetitionController extends Controller
             'catagory' => 'required'
         ]);
 
+        $organizer = $request->input('organizer_team');
+        $organizer_id = OrganizerTeam::where('name', $organizer)->pluck('id')->all();
+
         $competition = new Competition;
         $competition->name = $request->input('name');
         $competition->venue = $request->input('venue');
         $competition->description = $request->input('description');
         $competition->event_date = $request->input('event_date');
         $competition->reg_deadline = $request->input('reg_deadline');
-        $competition->organizer_teams_id = $request->input('organizer_team'); // haven't fixed yet
+        $competition->organizer_teams_id = $organizer_id[0]; 
         $competition->catagory_id = $request->input('catagory')+1;
         $competition->save();
 

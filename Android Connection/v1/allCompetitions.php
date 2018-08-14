@@ -1,5 +1,11 @@
 <?php
 
+/*
+*
+* Handles a GET Request
+* returns a response 
+* 
+*/
 
 require_once '../includes/DBoperations.php';
 $response = array();

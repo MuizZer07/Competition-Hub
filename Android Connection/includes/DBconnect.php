@@ -1,5 +1,12 @@
 <?php
 
+/*
+*
+* Middleware Class to communicate with our database
+* Connects the database
+* 
+*/
+
 class DBconnect{
 
     private $con;
