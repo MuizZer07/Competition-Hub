@@ -1,5 +1,13 @@
 <?php
 
+/*
+*
+* Handles all Query Model requests
+* CRUD opetations
+*
+*/
+
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -59,7 +67,7 @@ class QueryController extends Controller
         $query->competition_id = $competition_id;
         $query->save();
 
-        NotificationController::newNotification($query->competition_id);
+        NotificationController::newNotification($query->id);
         return redirect('/competitions/'.$competition_id)->with('success','You will be notified if any of the organizers replied to your query');
     }
 

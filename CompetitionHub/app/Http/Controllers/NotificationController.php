@@ -1,5 +1,13 @@
 <?php
 
+/*
+*
+* Handles all Notification requests
+* CRUD opetations
+*
+*/
+
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -16,16 +24,19 @@ use DB;
 
 class NotificationController extends Controller
 {
-    public static function addedOrganizerMember($user_id, $team_id){
-        User::find($user_id)->notify(new added_to_an_organizer_team($team_id));
-    }
-
-    public function MarkasRead(){
+     # marks all the unread notifications as read
+     public function MarkasRead(){
         auth()->user()->unreadNotifications->markasread();
     
         return redirect()->back();
     }
 
+    # creates notifications for the user who has been as a member to a organizer team
+    public static function addedOrganizerMember($user_id, $team_id){
+        User::find($user_id)->notify(new added_to_an_organizer_team($team_id));
+    }
+
+    # creates notifications for the user whose query is replied
     public static function QueryReplied($id){
         $query = Query::find($id);
         $user_id = $query->user_id;
@@ -34,7 +45,7 @@ class NotificationController extends Controller
         return redirect()->back();
     }
 
-
+    # creates notifications for the user who are participating a competition when a post is updated
     public static function updatePost($competition_id){
         $users = ParticipationHistory::where('competition_id', $competition_id)->pluck('participant_id')->all();
         
@@ -43,6 +54,7 @@ class NotificationController extends Controller
         }
     }
 
+    # creates notifications for the organizes when a query is asked about their hosting competition
     public static function newNotification($id){
         $query = Query::find($id);
         $users = DB::Table('queries')
@@ -56,6 +68,7 @@ class NotificationController extends Controller
         }
     }
 
+    # creates notifications if an event is taking place on the current date
     public static function EventAlert(){
         $date = Carbon::today()->format('Y-m-d');
         $user_id = auth()->user()->id;
