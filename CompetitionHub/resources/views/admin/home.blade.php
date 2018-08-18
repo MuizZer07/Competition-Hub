@@ -25,5 +25,31 @@
         </div>
     </section>
 
+    <div class="card">
+ <div class="card-header"><h1>Create Catagory</h1></div>
+
+ <div class="card-body">
+
+    {!! Form::open(['action'=> 'CatagoryController@store', 'method'=>'POST']) !!}
+        <div class="form-group">
+            {{ Form::label('name','Name')}}
+            {{ Form::text('name', '',['class'=>'form-control', 'placeholder'=>'Catagory Name'])}}
+        </div>
+
+        <div class="form-group">
+                {{ Form::label('description','Description')}}
+                {{ Form::textarea('description', '',['class'=>'form-control', 'placeholder'=>'Write a description'])}}
+        </div>
+       
+        {{ Form::submit('Submit', ['class'=>'btn btn-primary']) }}
+    {!! Form::close() !!}
+ </div>
+</div>
+</div>
+
+
+
+
+
         
 @endsection

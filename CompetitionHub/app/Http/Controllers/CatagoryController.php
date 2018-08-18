@@ -3,18 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Catagory;
 class CatagoryController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+ 
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +35,18 @@ class CatagoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
+
+        $catagory = new Catagory;
+        $catagory ->name = $request->input('name');
+        $catagory ->description = $request->input('description');
+        $catagory ->save();
+
+        return redirect('/admin/home')->with('success', 'Catagory Created!'); 
     }
 
     /**

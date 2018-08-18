@@ -15,7 +15,7 @@ class ExampleTest extends TestCase
     }
 
 
-    public function UserRouteTest()
+    public function testUserRouteTest()
     {
       $response = $this->call('GET', 'user/profile');
       $response = $this->call($method, $uri, $parameters, $cookies, $files, $server, $content);
@@ -23,14 +23,14 @@ class ExampleTest extends TestCase
       $this->assertEquals('Personal Information', $response->getContent());
     }
 
-    public function ViewDataTest()
+    public function testViewDataTest()
     {
         $this->call('GET', '/');
 
         $this->assertViewHas('name');
     }
     
-    public function SessionDataTest()
+    public function testSessionDataTest()
     {
         $this->call('GET', '/');
 

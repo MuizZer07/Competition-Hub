@@ -55,6 +55,8 @@ class AdminController extends Controller
                     'users'=> $users, 'history' => $history, 'organizers' => $organizers]);
     }
 
+ 
+
 
 
 

@@ -87,4 +87,7 @@ Route::get('markasread', 'NotificationController@MarkasRead')->name('markAsRead'
 Route::get('update_notificaiton', 'NotificationController@updatePost');
 Route::get('event_alert', 'NotificationController@EventAlert')->name('event_alert');
 
+# Catagory Routes
+Route::resource('/catagory', 'CatagoryController');
+
 
