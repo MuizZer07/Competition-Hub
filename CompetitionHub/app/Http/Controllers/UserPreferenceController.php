@@ -1,5 +1,13 @@
 <?php
 
+/**
+* 
+* Controller class for UserPreference Model
+* Handles requests, responses
+* CRUD opetations
+* 
+*/
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;

@@ -1,5 +1,13 @@
 <?php
 
+/**
+* 
+* Controller class for Admin
+* Handles requests, responses
+* CRUD opetations
+* 
+*/
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -35,6 +43,11 @@ class AdminController extends Controller
                     'users'=> $users, 'history' => $history, 'organizers' => $organizers]);
     }
 
+     /**
+     * 
+     * shows all the users
+     * 
+     */
     public function allusers()
     {
         $users = User::all();
@@ -45,6 +58,11 @@ class AdminController extends Controller
                     'users'=> $users, 'history' => $history, 'organizers' => $organizers]);
     }
 
+    /**
+     * 
+     * shows all competitions
+     * 
+     */
     public function allcomp()
     {
         $users = User::all();
@@ -54,11 +72,4 @@ class AdminController extends Controller
         return view('admin.allcomp')->with(['competitions' => $competitions, 
                     'users'=> $users, 'history' => $history, 'organizers' => $organizers]);
     }
-
- 
-
-
-
-
-    
 }

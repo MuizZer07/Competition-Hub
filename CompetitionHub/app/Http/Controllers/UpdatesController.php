@@ -1,5 +1,13 @@
 <?php
 
+/**
+* 
+* Controller class for Update Model
+* Handles requests, responses
+* CRUD opetations
+* 
+*/
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -17,7 +25,7 @@ class UpdatesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth:admin');
     }
     /**
      * Display a listing of the resource.

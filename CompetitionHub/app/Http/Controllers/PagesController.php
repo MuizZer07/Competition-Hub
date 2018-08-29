@@ -1,5 +1,12 @@
 <?php
 
+/**
+* 
+* Controller class for all pages
+* Handles requests, responses
+* 
+*/
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;

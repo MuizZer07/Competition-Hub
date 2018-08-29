@@ -1,6 +1,8 @@
 package com.cse.competitionhub;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,6 +14,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Parcelable;
+import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.FileProvider;
@@ -50,6 +53,7 @@ import java.io.OutputStream;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -220,6 +224,9 @@ public class MainActivity extends AppCompatActivity {
 
                                 // notifying the adapter for the change
                                 adapter.notifyDataSetChanged();
+
+                                // Alarm Notifications
+                                getDeadlineNotifications();
                             }
                         } catch (JSONException e) {
                             Toast.makeText( getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
@@ -394,6 +401,27 @@ public class MainActivity extends AppCompatActivity {
         }
         if(flag == false){
             Toast.makeText(this, "Not found!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // AlarmService Notifications
+    public void getDeadlineNotifications(){
+        for(int i=0; i<arrayList.size(); i++){
+            Competition competition = arrayList.get(i);
+            if(!competition.isDeadlineOver()){
+                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTimeInMillis(System.currentTimeMillis());
+
+                Intent notificationIntent = new Intent(this, AlarmReceiver.class);
+                PendingIntent broadcast = PendingIntent.getBroadcast(this, 100, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                calendar.set(Calendar.HOUR_OF_DAY, 10);
+                calendar.set(Calendar.MINUTE, 30);
+
+                alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                        AlarmManager.INTERVAL_HALF_DAY, broadcast);
+            }
         }
     }
 }

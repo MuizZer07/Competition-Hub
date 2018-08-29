@@ -1,5 +1,13 @@
 <?php
 
+/**
+* 
+* Controller class for Competition Model
+* Handles requests, responses
+* CRUD opetations
+* 
+*/
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -36,11 +44,13 @@ class CompetitionController extends Controller
         $date = Carbon::today()->format('Y-m-d');
         $competitions = DB::Table('competitions')->whereDate('event_date', '>=', $date)->get();
         $catagories = Catagory::all();
-        $user_preferences = DB::Table('user_preferences')
-                        ->join('catagories', 'catagory_id', 'id')
-                        ->where('user_id', auth()->user()->id)->get();
+       
 
         if(auth()->user()){ 
+            $user_preferences = DB::Table('user_preferences')
+            ->join('catagories', 'catagory_id', 'id')
+            ->where('user_id', auth()->user()->id)->get();
+            
             return view('pages.competition.index_user')->with(['competitions'=> $competitions,
             'catagories'=> $catagories,
             'date'=> $date,

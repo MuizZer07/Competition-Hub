@@ -1,5 +1,13 @@
 <?php
 
+/**
+* 
+* Controller class for OrganizerTeam Model
+* Handles requests, responses
+* CRUD opetations
+* 
+*/
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -17,7 +25,7 @@ class OrganizerTeamController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',[
+        $this->middleware('auth:admin',[
             'except' => [ 'show']
         ]);
     }

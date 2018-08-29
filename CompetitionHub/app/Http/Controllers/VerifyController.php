@@ -1,5 +1,12 @@
 <?php
 
+/**
+* 
+* Controller class for verification mail
+* Handles requests, responses
+* 
+*/
+
 namespace App\Http\Controllers;
 
 use App\User;

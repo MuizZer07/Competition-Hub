@@ -1,5 +1,13 @@
 <?php
 
+/**
+* 
+* Controller class for Organizer Model
+* Handles requests, responses
+* CRUD opetations
+* 
+*/
+
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\NotificationController;
@@ -18,7 +26,7 @@ class OrganizersController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth:admin');
     }
     /**
      * Display a listing of the resource.

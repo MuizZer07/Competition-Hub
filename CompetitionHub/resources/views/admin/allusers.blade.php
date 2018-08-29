@@ -22,7 +22,7 @@
                             @foreach($users as $user)
                             <tr>
                                 <td> {{ $user->id }}</td>
-                                <td> {{ $user->name }}</td>
+                                <td> <a href="/{{ $user->id }}/profile"> {{ $user->name }}</a></td>
                             </tr>
                             @endforeach
                         </table>

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import javax.security.auth.login.LoginException;
 
-// shows profile attibutes
+// shows profile attributes
 public class profileActivity extends AppCompatActivity {
 
     private TextView textDetails;

@@ -1,12 +1,19 @@
 <?php
 
+/**
+* 
+* Controller class for Catagory Model
+* Handles requests, responses
+* CRUD opetations
+* 
+*/
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Catagory;
 class CatagoryController extends Controller
 {
- 
     /**
      * Display a listing of the resource.
      *

@@ -5,6 +5,7 @@ public class Constants {
 
     // setting the IP Address, this will vary every time when the internet is connected to different network
 //    private static final String IP_ADDRESS = "http://192.168.1.102/";
+//    private static final String IP_ADDRESS = "http://7d2206b8.ngrok.io/";
     private static final String IP_ADDRESS = "https://competitionhub.000webhostapp.com/";
 
     // directory to the php scripts for making requests
