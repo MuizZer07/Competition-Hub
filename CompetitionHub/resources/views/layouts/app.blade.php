@@ -12,6 +12,11 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCePs3Vji5WoWZUN3Zd6US6Z4Snd__KIy4&callback=initMap"
+    async defer></script>
+    <script src="{{asset('js/script.js')}}"></script>
+    <script src="{{asset('js/ajaxsearch.js')}}"></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -19,9 +24,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <link rel="shortcut icon" href="{{{ asset('img/logo.png') }}}">
+
+    
 </head>
 <body>
     
