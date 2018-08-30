@@ -19,4 +19,13 @@ class UserTest extends TestCase
 
         $this->assertEquals($this->user->getName(), 'Muiz');
     }
+
+    public function testUserName2(){
+        $this->user->setName('Ahad');
+
+        $this->assertEquals($this->user->getName(), 'Ahad');
+    }
+
+
+
 }
