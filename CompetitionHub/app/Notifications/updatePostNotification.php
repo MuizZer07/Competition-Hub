@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * 
+ * Notification Class
+ * Notifies user when a new post is updated of any registered competition
+ * 
+ */
+
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;

@@ -9,9 +9,6 @@
     {!! Form::open(['action'=> ['OrganizersController@store', $id], 'method'=>'GET']) !!}
         <div class="form-group">
             {{ Form::label('name','Add')}}
-            {{-- {!! Form::select('users[]', $users, ['class' => 'form-control'],[
-                'multiple' => 'multiple', 'id'=>'users'
-            ]) !!} --}}
             <select multiple="multiple" name="user[]" id="user" class ="form-control" value="{{$users[0]}}">
                 @foreach($users as $user)
                         <option>{{$user}}</option>

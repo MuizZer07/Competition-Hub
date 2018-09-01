@@ -36,6 +36,7 @@ public class NotificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
+        // initializing variables
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
         listViewCompetitions = (ListView) findViewById(R.id.listViewComp);

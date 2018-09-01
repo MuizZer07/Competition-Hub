@@ -34,6 +34,7 @@ class CompetitionController extends Controller
             'except' => ['index', 'show', 'allCompetitions', 'allCompetitionsByCatagory']
         ]);
     }
+
     /**
      * Display competitions in a sorted way
      *
@@ -148,8 +149,8 @@ class CompetitionController extends Controller
         'updates' => $updates,
         'flag' => $flag
      ]);
-      
-}
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -205,6 +206,7 @@ class CompetitionController extends Controller
     }
 
     /**
+     * 
      * Shows all the competitions.
      */
     public function allCompetitions()
@@ -216,6 +218,7 @@ class CompetitionController extends Controller
     }
 
     /**
+     * 
      * Shows all the competitions by catagory.
      */
     public function allCompetitionsByCatagory()
@@ -224,7 +227,5 @@ class CompetitionController extends Controller
         $competitions = DB::Table('competitions')->whereDate('event_date', '>=', $date)->get();
         $catagories = Catagory::all();
         return view('pages.competition.catagorical')->with(['competitions'=> $competitions, 'catagories'=> $catagories]);
-  
     }
-
 }

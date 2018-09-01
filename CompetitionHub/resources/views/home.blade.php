@@ -1,26 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-        
-            @if(auth()->user()->token != null)
-                <div class="alert alert-danger" role="alert">
-                    Please Verify your Email Account. 
-                </div>
-            @endif
+<div class="container">    
+    @if(auth()->user()->token != null)
+        <div class="alert alert-danger" role="alert">
+            Please Verify your Email Account. 
+        </div>
+    @endif
 
-            @if($error != null)
-                <div class="alert alert-danger" role="alert">
-                    {{ $error }}<hr>
-                    <a href="/{{auth()->user()->id}}/profile_edit" class="btn btn-danger"> Edit Your Profile </a>
-                    <a href="/{{auth()->user()->id}}/profile" class="btn btn-danger"> See Your Profile </a>
-                </div>
-            @endif
+    @if($error != null)
+        <div class="alert alert-danger" role="alert">
+            {{ $error }}<hr>
+            <a href="/{{auth()->user()->id}}/profile_edit" class="btn btn-danger"> Edit Your Profile </a>
+            <a href="/{{auth()->user()->id}}/profile" class="btn btn-danger"> See Your Profile </a>
+        </div>
+    @endif
         
     <div class="row justify-content">
         <div class="col-md-6">
             <div class="card">
-
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -50,11 +48,8 @@
                         @endforeach
                     </table>
                     @else
-
                     @endif
-                </div>
-
-                
+                </div>    
         </div>
     </div>
 
@@ -149,6 +144,4 @@
             </div>
     </div>
 </div>
-
-
 @endsection

@@ -1,5 +1,12 @@
 <?php
 
+/*
+*
+* Migration Class
+* Creates participation_histories table in the database
+*
+*/
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;

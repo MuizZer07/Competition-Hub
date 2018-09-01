@@ -51,14 +51,8 @@
                             <div class="hidden-xs" id="banner">
                                 <form id="upload" method="get">
                                    <div class="form-group">
-                                       {{-- <label for="file-upload" class="custom-file-upload">
-                                            <i class="fa fa-camera"></i> <span>Update Banner</span>
-                                       </label> --}}
-                                        {{-- <input type="file" id="file-upload" name="" id=""> --}}
                                    </div>
                                 </form>
-                                {{-- <img class="img-responsive" src="{{ asset('img/logo3.jpg')}}" style="width: 80%; height:40%"  alt=""> --}}
-                               
                             </div>
                             
                             <div id="event">
@@ -76,23 +70,19 @@
                                                 Participate
                                                 </button>
                                                 
-                                                <!-- The Modal -->
                                                 <div class="modal" id="myModal">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                 
-                                                    <!-- Modal Header -->
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">{{ $competition->name }}</h4>
                                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                     </div>
                                                 
-                                                    <!-- Modal body -->
                                                     <div class="modal-body">
                                                         <b>You are going to be a participant of this competition. Confirm?</b><br>                                
                                                     </div>
                                                 
-                                                    <!-- Modal footer -->
                                                     <div class="modal-footer">
                                                         {!! Form::open(['action'=> ['ParticipationHistoryController@store', $competition], 'method'=>'POST']) !!}
                                                         {{ Form::hidden('competition_id', $competition->id) }}  
@@ -142,28 +132,6 @@
                                     @else
                                         No Recent Updates
                                     @endif
-
-
-                                    {{-- <h4>Events</h4>
-                                    <div id="event-list">
-                                       <div class="item">
-                                            <a href=""><img class="img-responsive" src="assets/images/event.jpg" alt=""></a>
-                                            <div id="links">
-                                                <a href="">Invite People</a>   
-                                                <a href="">Members</a>   
-                                                <a href="">Share</a> 
-                                            </div>   
-                                       </div>
-                                       <hr>
-                                       <div class="item">
-                                            <a href=""><img class="img-responsive" src="assets/images/event.jpg" alt=""></a>
-                                            <div id="links">
-                                                <a href="">Invite People</a>   
-                                                <a href="">Members</a>   
-                                                <a href="">Share</a> 
-                                            </div>   
-                                       </div>
-                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -173,6 +141,6 @@
                     
                 </div>
             </div>
-        </section> <!--   end content area     -->
+        </section> 
     </body>
     @endsection

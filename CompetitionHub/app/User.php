@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * 
+ * Model Class
+ * User, all users
+ * 
+ */
+
 namespace App;
 
 use Illuminate\Notifications\Notifiable;

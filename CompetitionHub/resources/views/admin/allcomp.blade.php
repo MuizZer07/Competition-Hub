@@ -12,7 +12,6 @@
             All Competition Information:</h3>
             @if(count($competitions)>0)
                 <p class="card-text">
-                
                     <table class="table table-striped">
                             <tr>
                                 <th>ID</th>
@@ -29,7 +28,6 @@
                                 <td> {{ $competition->venue }}</td>
                                 <td> {{ $competition->event_date }}</td>
                                 <td> {{ $competition->reg_deadline }}</td>
-
                             </tr>
                             @endforeach
                         </table>

@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * 
+ * Notification Class
+ * Notifies when a queiry is asked to the organizers
+ * 
+ */
+
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;

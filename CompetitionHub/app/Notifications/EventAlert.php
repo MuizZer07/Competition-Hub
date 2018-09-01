@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * 
+ * Notification Class
+ * Notifies user on the date of registered event
+ * 
+ */
+
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;

@@ -2,6 +2,14 @@ package com.cse.competitionhub.models;
 
 import java.io.Serializable;
 
+/**
+ *
+ * Model class for competition
+ * stores all information
+ * contains GETTER, SETTER
+ *
+ */
+
 public class Competition implements Serializable {
 
     private int id;

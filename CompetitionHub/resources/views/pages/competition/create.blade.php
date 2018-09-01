@@ -29,11 +29,6 @@
                 {{ Form::label('description','Description')}}
                 {{ Form::textarea('description', '',['class'=>'form-control', 'placeholder'=>'Write a description'])}}
         </div>
-        {{-- <div class="form-group">
-                {{ Form::label('organizer_team','Orgnizer Team')}}
-                {!! Form::select('organizer_team',  $teams, ['class' => 'form-control'],
-                ['id'=>'users' ], ['value' => $teams[0]]) !!}
-            </div> --}}
         <div class="form-group">
                 {{ Form::label('organizer_team','Orgnizer Team')}}
                 

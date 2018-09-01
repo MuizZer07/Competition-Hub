@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+// splash screen before the home screen, CompetitionHub logo
 public class SplashiActivity extends Activity {
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -61,7 +62,5 @@ public class SplashiActivity extends Activity {
             }
         };
         splashTread.start();
-
     }
-
 }

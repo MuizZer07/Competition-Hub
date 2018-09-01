@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * 
+ * Notification class
+ * Notifies when a user is added to a organizer team
+ * 
+ */
+
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;

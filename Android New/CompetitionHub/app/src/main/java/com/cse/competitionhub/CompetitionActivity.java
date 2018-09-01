@@ -26,6 +26,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *
+ * Screen shows competition details
+ * has participation/login button
+ *
+ */
+
 public class CompetitionActivity extends AppCompatActivity {
 
     TextView textViewDetails, textviewFlag;
@@ -96,6 +103,7 @@ public class CompetitionActivity extends AppCompatActivity {
 
     }
 
+    // cancels participation, deletes participation history from the database
     private void cancelParticipation(int participant_id1, int competition_id1){
         final String participant_id = Integer.toString(participant_id1);
         final String competition_id = Integer.toString(competition_id1);
@@ -139,9 +147,7 @@ public class CompetitionActivity extends AppCompatActivity {
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
 
-
-
-
+    // user participates in a competition, a participation history is created
     private void createParticipationHistory(int participant_id1, int competition_id1){
         final String participant_id = Integer.toString(participant_id1);
         final String competition_id = Integer.toString(competition_id1);
@@ -185,6 +191,7 @@ public class CompetitionActivity extends AppCompatActivity {
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
 
+    // checks whether user have already registered for the competition or not from the database
     public void checkParticipation(int participant_id1, int competition_id1){
         final String participant_id = Integer.toString(participant_id1);
         final String competition_id = Integer.toString(competition_id1);

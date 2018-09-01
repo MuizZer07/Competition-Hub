@@ -12,20 +12,19 @@
             All Users information:</h1>
             @if(count($users)>0)
                 <p class="card-text">
-                
                     <table class="table table-striped">
-                            <tr>
-                                <th>ID</th>
-                                <th>Users Name</th>
-                                <th></th>
-                            </tr>
-                            @foreach($users as $user)
-                            <tr>
-                                <td> {{ $user->id }}</td>
-                                <td> <a href="/{{ $user->id }}/profile"> {{ $user->name }}</a></td>
-                            </tr>
-                            @endforeach
-                        </table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Users Name</th>
+                            <th></th>
+                        </tr>
+                        @foreach($users as $user)
+                        <tr>
+                            <td> {{ $user->id }}</td>
+                            <td> <a href="/{{ $user->id }}/profile"> {{ $user->name }}</a></td>
+                        </tr>
+                        @endforeach
+                    </table>
             @endif
             </p>
             <hr>

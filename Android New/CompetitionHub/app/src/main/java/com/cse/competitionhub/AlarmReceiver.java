@@ -32,6 +32,7 @@ public class AlarmReceiver extends BroadcastReceiver{
 
         Notification.Builder builder = new Notification.Builder(context);
 
+        // notification bar view
         Notification notification = builder.setContentTitle("Registration Deadline Approaching!")
                 .setContentText("Hurry Up!.. Click here to participate!")
                 .setTicker("New Message Alert!")

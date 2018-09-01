@@ -16,12 +16,8 @@
     <br><br><br><br>
     
 </div>
-
  
- <body>
-       
-
-       
+ <body> 
        <section id="content-area">
            <div class="container">
                <div class="row">

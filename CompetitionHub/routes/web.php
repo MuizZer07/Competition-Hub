@@ -60,22 +60,22 @@ Route::get('/organizers/create/{organizerteam_id}', 'OrganizersController@create
 Route::get('/organizers/save/{organizerteam_id}', 'OrganizersController@store'); 
 
 # Admin Authentication Routes...
- Route::get('admin/home', 'AdminController@index');
- Route::get('admin/allusers', 'AdminController@allusers');
- Route::get('admin/allcomp', 'AdminController@allcomp');
+Route::get('admin/home', 'AdminController@index');
+Route::get('admin/allusers', 'AdminController@allusers');
+Route::get('admin/allcomp', 'AdminController@allcomp');
 
- $this->get('admin', 'Admin\LoginController@showLoginForm')->name('admin.login');
- $this->post('admin', 'Admin\LoginController@login');
- $this->post('logout', 'Admin\LoginController@logout')->name('logout');
+$this->get('admin', 'Admin\LoginController@showLoginForm')->name('admin.login');
+$this->post('admin', 'Admin\LoginController@login');
+$this->post('logout', 'Admin\LoginController@logout')->name('logout');
 
 # Admin Password Reset Routes...
- $this->get('admin-password/reset', 'Admin\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
- $this->post('admin-password/email', 'Admin\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
- $this->get('admin-password/reset/{token}', 'Admin\ResetPasswordController@showResetForm')->name('admin.password.reset');
- $this->post('admin-password/reset', 'Admin\ResetPasswordController@reset');
+$this->get('admin-password/reset', 'Admin\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+$this->post('admin-password/email', 'Admin\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+$this->get('admin-password/reset/{token}', 'Admin\ResetPasswordController@showResetForm')->name('admin.password.reset');
+$this->post('admin-password/reset', 'Admin\ResetPasswordController@reset');
 
 # Email Verification
- Route::get('/verify/{token}', 'VerifyController@verify')->name('verify');
+Route::get('/verify/{token}', 'VerifyController@verify')->name('verify');
 
 # Socialite
 Route::get('/login/{social}', 'Auth\LoginController@socialLogin')->where('social', 'twitter|facebook|linkedin|google|github');

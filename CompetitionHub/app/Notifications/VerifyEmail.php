@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * 
+ * Notification Class
+ * Sends verification email to the newly registered user
+ * 
+ */
+
 namespace App\Notifications;
 
 use App\User;

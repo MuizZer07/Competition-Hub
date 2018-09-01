@@ -21,6 +21,13 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *
+ * Edit Profile screen for user account
+ * updates user table accordingly
+ *
+ */
+
 public class EditProfileActivity extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
@@ -74,6 +81,7 @@ public class EditProfileActivity extends AppCompatActivity {
         });
     }
 
+    // updates user information in the database
     private void saveUser(int user_id){
         final String userid = Integer.toString(user_id);
         progressDialog.show();

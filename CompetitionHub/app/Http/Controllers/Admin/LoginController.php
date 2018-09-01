@@ -1,5 +1,12 @@
 <?php
 
+/*
+*
+* Login controller for Admin
+* Hadles Login requests
+*
+*/
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;

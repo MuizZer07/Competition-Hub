@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * 
+ * Model Class
+ * Competition
+ * 
+ */
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;

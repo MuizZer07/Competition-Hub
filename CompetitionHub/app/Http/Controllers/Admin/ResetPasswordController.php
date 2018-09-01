@@ -1,5 +1,12 @@
 <?php
 
+/*
+*
+* Reset Password Controller for Admin
+* Hadles Reset Password requests
+*
+*/
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;

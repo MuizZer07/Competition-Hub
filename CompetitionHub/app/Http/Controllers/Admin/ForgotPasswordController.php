@@ -1,5 +1,12 @@
 <?php
 
+/*
+*
+* Forgot Password Controller for Admin
+* Hadles Forgot Password requests
+*
+*/
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
