@@ -14,41 +14,28 @@ class ExampleTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function testHome()
-    {
-        $response = $this->get('/');
 
-        $response->assertSee('Welcome to CompetitionHub!');
+    public function testUserRouteTest()
+    {
+      $response = $this->call('GET', 'user/profile');
+      $response = $this->call($method, $uri, $parameters, $cookies, $files, $server, $content);
+
+      $this->assertEquals('Personal Information', $response->getContent());
     }
 
-    public function testCatagory()
+    public function testViewDataTest()
     {
-        $response = $this->get('/catagory');
+        $this->call('GET', '/');
 
-        $response->assertStatus(200);
+        $this->assertViewHas('name');
     }
-
-    public function testCompetition()
+    
+    public function testSessionDataTest()
     {
-        $response = $this->get('/competitions');
+        $this->call('GET', '/');
 
-        $response->assertSee('Top Competitions', 'Top Catagories & Competitions');
-        
+        $this->assertSessionHas('name');
     }
-    public function testUser()
-    {
-        $this->actingAs($user);
-
-        $this->assertTrue(true);
-
-    }
-
-
-
-
-
-
-
 
 
 }

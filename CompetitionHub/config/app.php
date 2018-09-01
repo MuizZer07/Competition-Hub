@@ -151,7 +151,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        FarhanWazir\GoogleMaps\GMapsServiceProvider::class,
          Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
@@ -217,7 +217,8 @@ return [
         //custom
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-
+        'GMaps' => FarhanWazir\GoogleMaps\Facades\GMapsFacade::class,
+        
     ],
 
 ];

@@ -12,6 +12,8 @@
                 <b> Registration Deadline: {{ $competition->reg_deadline}} </b>
                 <br><br>
                     Description: {{ $competition->description}}
+                    <div id="map">
+                    </div>
             </p>
             <hr>
 

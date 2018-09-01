@@ -41,9 +41,9 @@
                                             Event Date: {{ $competition->event_date }} <br>
                                         <b> Registration Deadline: {{ $competition->reg_deadline}} </b><br><br> 
                                         Description: {{ $competition->description}}
+                                        <div id="map">     <!-- google map added -->
+                                        </div>
                                     </p>
-                                    <div id="map">
-                                    </div>
                                     <hr>
 
                         
