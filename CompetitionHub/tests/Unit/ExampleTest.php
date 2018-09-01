@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-
+// test true
 class ExampleTest extends TestCase
 {
    
@@ -14,28 +14,29 @@ class ExampleTest extends TestCase
         $this->assertTrue(true);
     }
 
+   // test Home
+    public function testHome()
+   {
+        $response = $this->get('/');
 
-    public function testUserRouteTest()
-    {
-      $response = $this->call('GET', 'user/profile');
-      $response = $this->call($method, $uri, $parameters, $cookies, $files, $server, $content);
-
-      $this->assertEquals('Personal Information', $response->getContent());
+        $response->assertSee('Welcome to CompetitionHub!');
     }
-
-    public function testViewDataTest()
+ // test Catagory
+    public function testCatagory()
     {
-        $this->call('GET', '/');
-
-        $this->assertViewHas('name');
+        $response = $this->get('/catagory');
+        $response->assertStatus(200);
     }
-    
-    public function testSessionDataTest()
+ // test competition
+    public function testCompetition()
     {
-        $this->call('GET', '/');
-
-        $this->assertSessionHas('name');
+        $response = $this->get('/competitions');
+        $response->assertSee('Top Competitions', 'Top Catagories & Competitions');
     }
-
-
+ // test user
+    public function testUser()
+    {
+        $this->actingAs($user);
+        $this->assertTrue(true);
+    }
 }
